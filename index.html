@@ -379,16 +379,54 @@ section{padding:5rem 0}
   border:1px dashed rgba(52,211,153,0.35);
   animation:spin 18s linear infinite reverse;
 }
+/* ===== NATURAL GLASS + HOVER ===== */
+
 .hero-avatar-bg{
-  width:320px;height:320px;border-radius:50%;
-  background:var(--g1);
-  backdrop-filter:var(--g-blur);
-  -webkit-backdrop-filter:var(--g-blur);
-  border:1px solid rgba(255,255,255,0.8);
-  box-shadow:var(--sh-xl),inset 0 1px 0 rgba(255,255,255,0.95);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;position:relative;
-  flex-shrink:0;
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  /* softer glass — no white wash */
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+
+  transition: all 0.4s ease;
+}
+
+/* IMAGE */
+.hero-avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1),
+              filter 0.5s ease;
+}
+
+/* HOVER — natural pop */
+.hero-avatar-wrap:hover .hero-avatar-img{
+  transform: scale(1.05) translateY(-4px);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* HOVER — soft blur depth */
+.hero-avatar-wrap:hover .hero-avatar-bg{
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* REMOVE strong white overlays */
+.hero-avatar-bg::before,
+.hero-avatar-bg::after{
+  display: none;
 }
 .hero-avatar-emoji{font-size:9rem;line-height:1;animation:bobble 4s ease-in-out infinite}
 @keyframes bobble{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
@@ -1018,6 +1056,75 @@ footer p span{color:var(--green3)}
   .hero-stats{gap:1.2rem}
   .cert-stats{grid-template-columns:1fr 1fr}
 }
+
+/* ===== COMPLETE AVATAR SYSTEM ===== */
+
+.hero-avatar-wrap{
+  position: relative;
+  width: 380px;
+  height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  perspective: 1000px;
+}
+
+.hero-avatar-bg{
+  position: relative;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  /* clean glass (no white fade) */
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+
+  transition: all 0.3s ease;
+}
+
+.hero-avatar-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+
+  transition: transform 0.25s ease, filter 0.25s ease;
+  will-change: transform, filter;
+}
+
+/* SIMPLE HOVER (fallback) */
+.hero-avatar-wrap:hover .hero-avatar-img{
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.hero-avatar-wrap:hover .hero-avatar-bg{
+  backdrop-filter: blur(24px);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:1024px){
+  .hero-avatar-wrap{ width:280px; height:280px; }
+  .hero-avatar-bg{ width:240px; height:240px; }
+}
+
+@media (max-width:768px){
+  .hero-avatar-wrap{ width:220px; height:220px; }
+  .hero-avatar-bg{ width:190px; height:190px; }
+}
+
+@media (max-width:480px){
+  .hero-avatar-wrap{ width:180px; height:180px; }
+  .hero-avatar-bg{ width:150px; height:150px; }
+}
 </style>
 </head>
 <body>
@@ -1136,7 +1243,8 @@ footer p span{color:var(--green3)}
           <div class="hero-avatar-ring"></div>
           <div class="hero-avatar-ring-2"></div>
           <div class="hero-avatar-bg">
-            <div class="hero-avatar-emoji">👨‍💻</div>
+          <img src="IMG_20240223_183601_428.jpg" alt="Muhammad Umer Faheem" class="hero-avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="hero-avatar-emoji" style="display:none">👨‍💻</div>
           </div>
         </div>
         <div class="hero-floating-card fc1">
@@ -2336,6 +2444,36 @@ if(tagline){
   // Start typing after 4 seconds (after welcome overlay)
   setTimeout(typeRole,4200);
 }
+(function(){
+  const avatar = document.querySelector('.hero-avatar-wrap');
+  if(!avatar) return;
+
+  const img = avatar.querySelector('.hero-avatar-img');
+  const bg  = avatar.querySelector('.hero-avatar-bg');
+
+  avatar.addEventListener('mousemove', (e) => {
+    const rect = avatar.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+
+    const rx = -(y - cy) / 18;
+    const ry =  (x - cx) / 18;
+
+    img.style.transform = `scale(1.06) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    img.style.filter = `blur(${Math.min(1.2, Math.abs(rx+ry)*0.15)}px)`;
+
+    bg.style.transform = `rotateX(${rx/2}deg) rotateY(${ry/2}deg)`;
+  });
+
+  avatar.addEventListener('mouseleave', () => {
+    img.style.transform = '';
+    img.style.filter = '';
+    bg.style.transform = '';
+  });
+})();
 </script>
 </body>
 </html>
