@@ -175,137 +175,189 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:56px;height:56px;bo
 @keyframes lB{0%{width:0%}100%{width:100%}}
 @keyframes fU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════════  HEADER — iOS 26 Tab Bar Style */
+/* ══════════════════════════════  HEADER — iOS 26 Liquid Glass Tab Bar */
 header{
   position:fixed;top:0;left:0;width:100%;z-index:1000;
-  padding:.9rem 0;
+  padding:.75rem 0;
   background:transparent;
   pointer-events:none;
   transition:padding .4s cubic-bezier(.4,0,.2,1);
 }
-header.scrolled{padding:.6rem 0;}
+header.scrolled{padding:.5rem 0;}
 nav{
   display:flex;justify-content:space-between;align-items:center;
-  max-width:1180px;margin:0 auto;
-  padding:.52rem .65rem .52rem 1.2rem;
-  width:calc(100% - 5rem);
+  max-width:1220px;margin:0 auto;
+  padding:.48rem .55rem .48rem 1.4rem;
+  width:calc(100% - 4rem);
   pointer-events:all;
-  background:rgba(236,244,240,0.72);
-  backdrop-filter:blur(52px) saturate(280%) brightness(1.06);
-  -webkit-backdrop-filter:blur(52px) saturate(280%) brightness(1.06);
-  border-radius:28px;
-  border:1px solid rgba(255,255,255,0.92);
-  border-bottom:1px solid rgba(255,255,255,0.5);
-  border-right:1px solid rgba(255,255,255,0.7);
+  background:rgba(230,244,238,0.68);
+  backdrop-filter:blur(60px) saturate(300%) brightness(1.08) contrast(1.02);
+  -webkit-backdrop-filter:blur(60px) saturate(300%) brightness(1.08);
+  border-radius:32px;
+  border:1px solid rgba(255,255,255,0.95);
+  border-bottom:1px solid rgba(255,255,255,0.55);
   box-shadow:
-    inset 0 2.5px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(16,185,129,0.05),
-    inset 1px 0 0 rgba(255,255,255,0.8),
-    inset -1px 0 0 rgba(255,255,255,0.8),
-    0 10px 40px rgba(16,185,129,0.13),
-    0 2px 8px rgba(0,0,0,0.06),
-    0 0 0 0.5px rgba(16,185,129,0.12);
+    inset 0 3px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(16,185,129,0.06),
+    inset 1.5px 0 0 rgba(255,255,255,0.9),
+    inset -1.5px 0 0 rgba(255,255,255,0.9),
+    0 12px 48px rgba(16,185,129,0.14),
+    0 4px 12px rgba(0,0,0,0.07),
+    0 0 0 0.5px rgba(16,185,129,0.14),
+    0 1px 0 rgba(255,255,255,0.6);
   transition:all .4s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+/* Subtle rainbow specular on top edge */
+nav::before{
+  content:'';position:absolute;top:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(16,185,129,0.5),rgba(110,231,183,0.7),rgba(16,185,129,0.5),transparent);
+  border-radius:999px;pointer-events:none;
 }
 header.scrolled nav{
-  background:rgba(236,244,240,0.88);
-  border-radius:24px;
+  background:rgba(230,244,238,0.85);
+  border-radius:26px;
   box-shadow:
     inset 0 2.5px 0 rgba(255,255,255,1),
-    0 14px 52px rgba(16,185,129,0.16),
-    0 2px 10px rgba(0,0,0,0.08);
+    0 16px 56px rgba(16,185,129,0.18),
+    0 4px 12px rgba(0,0,0,0.08),
+    0 0 0 0.5px rgba(16,185,129,0.12);
 }
 .logo{
-  font-family:'Playfair Display',serif;font-size:1.28rem;color:var(--green);
-  font-weight:700;display:flex;align-items:center;gap:.52rem;flex-shrink:0;
+  font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dk);
+  font-weight:700;display:flex;align-items:center;gap:.6rem;flex-shrink:0;
+  letter-spacing:-.3px;
 }
 .logo-dot{
-  width:8px;height:8px;background:var(--grad);border-radius:50%;
-  box-shadow:0 0 12px rgba(16,185,129,0.7);
+  width:9px;height:9px;
+  background:conic-gradient(from 0deg,#10b981,#34d399,#6ee7b7,#10b981);
+  border-radius:50%;
+  box-shadow:0 0 14px rgba(16,185,129,0.8),0 0 28px rgba(16,185,129,0.3);
   animation:pulse 2.5s ease-in-out infinite;
 }
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.75}}
+/* NAV LINKS GROUP */
 nav ul{
-  list-style:none;display:flex;gap:.1rem;align-items:center;
-  background:rgba(16,185,129,0.06);
-  border-radius:22px;
-  padding:.22rem .32rem;
-  border:1px solid rgba(16,185,129,0.10);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,0.7),inset 0 -1px 0 rgba(16,185,129,0.05);
+  list-style:none;display:flex;gap:.06rem;align-items:center;
+  background:rgba(255,255,255,0.38);
+  border-radius:24px;
+  padding:.2rem .28rem;
+  border:1px solid rgba(255,255,255,0.8);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 0 rgba(16,185,129,0.06),
+    0 2px 8px rgba(16,185,129,0.06);
+  backdrop-filter:blur(20px);
 }
 .nav-link{
-  color:var(--text2);font-weight:600;font-size:.79rem;
-  letter-spacing:.15px;transition:all .22s cubic-bezier(.34,1.3,.64,1);
-  padding:.34rem .82rem;border-radius:18px;position:relative;
+  color:var(--text2);font-weight:600;font-size:.78rem;
+  letter-spacing:.1px;transition:all .2s cubic-bezier(.34,1.3,.64,1);
+  padding:.32rem .78rem;border-radius:20px;position:relative;
   white-space:nowrap;
 }
 .nav-link:hover{
   color:var(--green-dk);
-  background:rgba(255,255,255,0.75);
-  box-shadow:0 2px 8px rgba(16,185,129,0.15),inset 0 1px 0 rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.85);
+  box-shadow:0 2px 10px rgba(16,185,129,0.16),inset 0 1px 0 rgba(255,255,255,0.95);
+  transform:translateY(-1px);
 }
 .nav-link.nav-active{
   color:white;
   background:linear-gradient(145deg,#10b981,#059669);
-  box-shadow:0 4px 16px rgba(16,185,129,0.42),inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow:0 4px 18px rgba(16,185,129,0.45),inset 0 1px 0 rgba(255,255,255,0.3);
+}
+/* RIGHT-SIDE NAV ACTIONS */
+.nav-actions{
+  display:flex;align-items:center;gap:.5rem;flex-shrink:0;
 }
 .nav-cta{
-  padding:.46rem 1.2rem;border-radius:20px;flex-shrink:0;
-  background:var(--grad);color:white;font-weight:700;font-size:.8rem;
-  box-shadow:0 4px 16px rgba(16,185,129,0.42),inset 0 1px 0 rgba(255,255,255,0.25);
+  padding:.46rem 1.3rem;border-radius:22px;
+  background:linear-gradient(145deg,#10b981,#059669);
+  color:white;font-weight:700;font-size:.8rem;
+  box-shadow:0 4px 18px rgba(16,185,129,0.48),inset 0 1.5px 0 rgba(255,255,255,0.28);
   transition:all .28s cubic-bezier(.34,1.3,.64,1);border:none;
-  letter-spacing:.2px;
+  letter-spacing:.25px;white-space:nowrap;
 }
-.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 8px 28px rgba(16,185,129,0.52)}
+.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 32px rgba(16,185,129,0.55)}
+/* AI CHAT BUTTON IN NAV */
+.nav-ai-btn{
+  width:38px;height:38px;border-radius:14px;
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(255,255,255,0.92);
+  color:var(--green-dk);font-size:.95rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .25s cubic-bezier(.34,1.3,.64,1);flex-shrink:0;
+  box-shadow:0 3px 10px rgba(16,185,129,0.14),inset 0 1.5px 0 rgba(255,255,255,1);
+  position:relative;
+  backdrop-filter:blur(20px);
+}
+.nav-ai-btn:hover{
+  background:rgba(255,255,255,0.92);
+  transform:translateY(-2px) scale(1.06);
+  box-shadow:0 8px 24px rgba(16,185,129,0.28),inset 0 1.5px 0 rgba(255,255,255,1);
+  color:var(--green);
+}
+.nav-ai-btn .ai-ping{
+  position:absolute;top:5px;right:5px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px rgba(16,185,129,0.9);
+  animation:aiPing 2s ease-in-out infinite;
+}
+@keyframes aiPing{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.6}}
 .mob-btn{
   display:none;
-  background:rgba(255,255,255,0.7);
-  border:1px solid rgba(16,185,129,0.2);
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(255,255,255,0.92);
   border-radius:14px;
-  color:var(--green);font-size:1.1rem;cursor:pointer;
+  color:var(--green-dk);font-size:1rem;cursor:pointer;
   width:38px;height:38px;align-items:center;justify-content:center;
   transition:all .22s ease;flex-shrink:0;
-  box-shadow:0 2px 8px rgba(16,185,129,0.1),inset 0 1px 0 rgba(255,255,255,0.9);
+  box-shadow:0 3px 10px rgba(16,185,129,0.12),inset 0 1.5px 0 rgba(255,255,255,1);
+  backdrop-filter:blur(20px);
 }
-.mob-btn:hover{background:rgba(255,255,255,0.9);box-shadow:0 4px 14px rgba(16,185,129,0.2)}
+.mob-btn:hover{background:rgba(255,255,255,0.92);box-shadow:0 5px 16px rgba(16,185,129,0.22)}
 /* Mobile overlay menu */
 .mob-menu{
   display:none;
   position:fixed;inset:0;z-index:998;
   align-items:flex-start;justify-content:center;
-  padding-top:5.2rem;
-  background:rgba(0,0,0,0.15);
-  backdrop-filter:blur(4px);
+  padding-top:5rem;
+  background:rgba(0,0,0,0.12);
+  backdrop-filter:blur(6px);
   pointer-events:none;
 }
 .mob-menu.open{display:flex;pointer-events:all;}
 .mob-menu-inner{
-  background:rgba(238,245,242,0.90);
-  backdrop-filter:blur(48px) saturate(280%);
-  -webkit-backdrop-filter:blur(48px) saturate(280%);
-  border:1px solid rgba(255,255,255,0.88);
+  background:rgba(235,246,241,0.92);
+  backdrop-filter:blur(56px) saturate(300%);
+  -webkit-backdrop-filter:blur(56px) saturate(300%);
+  border:1px solid rgba(255,255,255,0.92);
   border-radius:var(--r-xl);
-  padding:1.1rem;
-  width:calc(100% - 3rem);
-  max-width:420px;
-  display:flex;flex-direction:column;gap:.25rem;
-  box-shadow:inset 0 2px 0 rgba(255,255,255,0.95),0 24px 60px rgba(16,185,129,0.16),0 8px 24px rgba(0,0,0,0.1);
-  animation:menuPop .32s cubic-bezier(.34,1.4,.64,1) both;
+  padding:1rem;
+  width:calc(100% - 2.5rem);
+  max-width:400px;
+  display:flex;flex-direction:column;gap:.2rem;
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.98),
+    0 28px 64px rgba(16,185,129,0.18),
+    0 8px 28px rgba(0,0,0,0.1);
+  animation:menuPop .3s cubic-bezier(.34,1.4,.64,1) both;
 }
-@keyframes menuPop{from{opacity:0;transform:translateY(-10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes menuPop{from{opacity:0;transform:translateY(-12px) scale(.96)}to{opacity:1;transform:none}}
 .mob-menu a{
-  color:var(--text2);font-weight:600;padding:.78rem 1.1rem;
-  border-radius:var(--r-md);font-size:.93rem;
+  color:var(--text2);font-weight:600;padding:.75rem 1rem;
+  border-radius:18px;font-size:.92rem;
   transition:all .18s ease;display:flex;align-items:center;gap:.65rem;
 }
 .mob-menu a:hover{background:rgba(16,185,129,0.10);color:var(--green-dk)}
 .mob-close-row{
-  margin-top:.3rem;border-top:1px solid rgba(16,185,129,0.10);
-  padding-top:.3rem;
+  margin-top:.25rem;border-top:1px solid rgba(16,185,129,0.10);
+  padding-top:.25rem;
 }
 .mob-close-btn{
-  background:none;border:none;color:var(--muted);font-size:1rem;
-  cursor:pointer;padding:.78rem 1.1rem;border-radius:var(--r-md);
+  background:none;border:none;color:var(--muted);font-size:.9rem;
+  cursor:pointer;padding:.75rem 1rem;border-radius:18px;
   font-family:'Sora',sans-serif;font-weight:600;display:flex;align-items:center;gap:.6rem;
   transition:all .18s ease;width:100%;justify-content:center;
 }
@@ -1522,6 +1574,28 @@ footer{
 </head>
 <body>
 
+<!-- TOAST -->
+<div id="toastWrap"></div>
+
+<!-- FLOATING CHAT BTN (mobile/tablet) -->
+<button id="floatChatBtn" title="Ask Umer's AI" onclick="toggleAIChat()">
+  <i class="fas fa-wand-magic-sparkles"></i>
+  <div class="fcb-ping"></div>
+</button>
+
+<!-- SECTION PROGRESS DOTS (desktop) -->
+<div class="sp-wrap" id="spWrap">
+  <div class="sp-dot on" data-t="home"><span class="sp-lbl">Home</span></div>
+  <div class="sp-dot" data-t="about"><span class="sp-lbl">About</span></div>
+  <div class="sp-dot" data-t="skills"><span class="sp-lbl">Skills</span></div>
+  <div class="sp-dot" data-t="experience"><span class="sp-lbl">Experience</span></div>
+  <div class="sp-dot" data-t="education"><span class="sp-lbl">Education</span></div>
+  <div class="sp-dot" data-t="projects"><span class="sp-lbl">Projects</span></div>
+  <div class="sp-dot" data-t="certifications"><span class="sp-lbl">Certifications</span></div>
+  <div class="sp-dot" data-t="awards"><span class="sp-lbl">Awards</span></div>
+  <div class="sp-dot" data-t="contact"><span class="sp-lbl">Contact</span></div>
+</div>
+
 <!-- READING PROGRESS BAR -->
 <div class="reading-progress" id="readingProgress"></div>
 
@@ -1570,8 +1644,15 @@ footer{
       <li><a href="#certifications" class="nav-link">Certs</a></li>
       <li><a href="#awards" class="nav-link">Awards</a></li>
     </ul>
-    <a href="#contact" class="nav-cta">Let's Connect</a>
-    <button class="mob-btn" id="mobBtn"><i class="fas fa-bars"></i></button>
+    <div class="nav-actions">
+      <button class="nav-ai-btn" id="aiChatBtn" title="Ask Umer's AI Assistant" onclick="toggleAIChat()">
+        <i class="fas fa-wand-magic-sparkles" style="font-size:.85rem"></i>
+        <div class="ai-ping"></div>
+        <span class="chat-unread" id="chatUnreadBadge">1</span>
+      </button>
+      <a href="#contact" class="nav-cta">Let's Connect</a>
+      <button class="mob-btn" id="mobBtn"><i class="fas fa-bars"></i></button>
+    </div>
   </nav>
   <div class="mob-menu" id="mobMenu" onclick="if(event.target===this)closeMob()">
     <div class="mob-menu-inner">
@@ -1597,6 +1678,7 @@ footer{
   <div class="container">
     <div class="hero-inner">
       <div class="hero-left">
+        <div class="avail-badge"><div class="avail-dot"></div> Open to Work · Actively Available 2026</div>
         <div class="hero-badge">
           <div class="hero-badge-dot"></div>
           Available for Opportunities
@@ -1637,12 +1719,24 @@ footer{
       </div>
       <div class="hero-right">
         <div class="hero-avatar-wrap">
+          <!-- Glow halo -->
+          <div class="hero-avatar-glow"></div>
+          <!-- Orbital rings -->
           <div class="hero-avatar-ring"></div>
           <div class="hero-avatar-ring-2"></div>
+          <div class="hero-avatar-ring-3"></div>
+          <div class="hero-avatar-ring-4"></div>
+          <!-- Orbiting dots -->
+          <div class="hero-orbit-dot orbit-green"></div>
+          <div class="hero-orbit-dot orbit-gold"></div>
+          <div class="hero-orbit-dot orbit-teal"></div>
+          <!-- Avatar image -->
           <div class="hero-avatar-bg">
             <img src="IMG_20240223_183601_428.jpg" alt="Muhammad Umer Faheem" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
             <div class="hero-avatar-emoji" style="display:none">👨‍💻</div>
           </div>
+          <!-- Corner badge -->
+          <div class="hero-avatar-status"><div class="has-dot"></div>Open to Work</div>
         </div>
         <div class="hero-floating-card fc1">
           <div class="fc-icon"><i class="fas fa-code"></i></div>
@@ -1722,7 +1816,7 @@ footer{
       <div class="about-right reveal-right">
         <div class="about-stats-row">
           <div class="about-stat-mini">
-            <div class="num">0.6</div>
+            <div class="num">3+</div>
             <div class="lbl">Yrs Exp</div>
           </div>
           <div class="about-stat-mini">
@@ -1745,7 +1839,7 @@ footer{
           </div>
           <div class="info-item">
             <div class="info-label">Email</div>
-            <div class="info-val"><a href="/cdn-cgi/l/email-protection#51243c342337303934343c67626311363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="10657d756276717875757d26232250777d71797c3e737f7d">[email&#160;protected]</span></a></div>
+            <div class="info-val"><a href="mailto:m.umer.faheem@gmail.com">m.umer.faheem@gmail.com</a></div>
           </div>
           <div class="info-item">
             <div class="info-label">Phone</div>
@@ -1795,7 +1889,7 @@ footer{
       <p class="sec-sub">Access my full CV and tailored Cover Letter — each crafted with care to reflect my skills, experience, and professional journey.</p>
     </div>
     <div class="dl-outer">
-      <a href="Muhammad_Umer_Faheem_-_CV.pdf" download="Muhammad_Umer_Faheem_CV.pdf" class="dl-card dl-card-cv reveal-left">
+      <a href="Muhammad_Umer_Faheem_-_CV.pdf" download class="dl-card dl-card-cv reveal-left">
         <div class="dl-card-icon"><i class="fas fa-file-alt"></i></div>
         <div class="dl-card-body">
           <div class="dl-card-type">Curriculum Vitae</div>
@@ -1804,7 +1898,7 @@ footer{
         </div>
         <div class="dl-card-arrow"><i class="fas fa-arrow-down"></i></div>
       </a>
-      <a href="Muhammad_Umer_Faheem_Cover_Letter.docx" download="Muhammad_Umer_Faheem_Cover_Letter.docx" class="dl-card dl-card-cl reveal-right">
+      <a href="Muhammad_Umer_Faheem_Cover_Letter.docx" download class="dl-card dl-card-cl reveal-right">
         <div class="dl-card-icon"><i class="fas fa-envelope-open-text"></i></div>
         <div class="dl-card-body">
           <div class="dl-card-type">Cover Letter</div>
@@ -2701,7 +2795,7 @@ footer{
           <div class="contact-icon"><i class="fas fa-envelope"></i></div>
           <div class="contact-item-content">
             <h4>Email</h4>
-            <a href="/cdn-cgi/l/email-protection#62170f071004030a07070f54515022050f030b0e4c010d0f"><span class="__cf_email__" data-cfemail="b6c3dbd3c4d0d7ded3d3db808584f6d1dbd7dfda98d5d9db">[email&#160;protected]</span></a>
+            <a href="mailto:m.umer.faheem@gmail.com">m.umer.faheem@gmail.com</a>
           </div>
         </div>
         <div class="contact-item">
@@ -2744,21 +2838,30 @@ footer{
         <h3><i class="fas fa-paper-plane"></i> Send a Message</h3>
         <div class="form-row">
           <div class="form-group">
-            <input type="text" class="form-input" placeholder="Your Name" required>
+            <input type="text" id="cf-name" class="form-input" placeholder="Your Name" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-input" placeholder="Your Email" required>
+            <input type="email" id="cf-email" class="form-input" placeholder="Your Email" required>
           </div>
         </div>
         <div class="form-group">
-          <input type="text" class="form-input" placeholder="Subject">
+          <input type="text" id="cf-subject" class="form-input" placeholder="Subject">
         </div>
         <div class="form-group">
-          <textarea class="form-textarea" placeholder="Your Message..."></textarea>
+          <textarea id="cf-message" class="form-textarea" placeholder="Your Message..."></textarea>
         </div>
-        <button class="form-submit" onclick="handleFormSubmit(this)">
+        <button class="form-submit" id="cfSubmitBtn" onclick="handleFormSubmit(this)">
           <i class="fas fa-paper-plane"></i> Send Message
         </button>
+        <div class="form-success-msg" id="formSuccessMsg">
+          <i class="fas fa-check-circle" style="color:var(--green);font-size:1.2rem;flex-shrink:0"></i>
+          <span>Email client opened! Click <strong>Send</strong> in your email app to deliver your message to Umer.</span>
+        </div>
+        <p style="margin-top:.6rem;font-size:.73rem;color:rgba(255,255,255,0.35);text-align:center;display:flex;align-items:center;justify-content:center;gap:.35rem"><i class="fas fa-lock" style="color:var(--green3)"></i> Opens your email client — sent directly to Umer's inbox</p>
+        <div class="contact-quick-btns">
+          <a href="https://wa.me/923258148564?text=Hi%20Umer!%20I%20saw%20your%20portfolio." target="_blank" class="wa-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="https://linkedin.com/in/youknowumer" target="_blank" class="li-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2774,7 +2877,7 @@ footer{
       <div class="footer-socials">
         <a href="https://linkedin.com/in/youknowumer" target="_blank" class="footer-social"><i class="fab fa-linkedin-in"></i></a>
         <a href="https://github.com/youknowumer" target="_blank" class="footer-social"><i class="fab fa-github"></i></a>
-        <a href="/cdn-cgi/l/email-protection#7d0810180f1b1c151818104b4e4f3d1a101c1411531e1210" class="footer-social"><i class="fas fa-envelope"></i></a>
+        <a href="mailto:m.umer.faheem@gmail.com" class="footer-social"><i class="fas fa-envelope"></i></a>
         <a href="https://wa.me/923258148564" target="_blank" class="footer-social"><i class="fab fa-whatsapp"></i></a>
       </div>
       <p>© 2025 <span>Muhammad Umer Faheem</span>. Crafted with passion in <span>Lahore, Pakistan 🇵🇰</span></p>
@@ -2790,23 +2893,216 @@ footer{
 
 <!-- FINAL POLISH STYLES -->
 <style>
-/* ── iOS 26 Tab Bar: stronger side curves, inner specular highlight ── */
-nav {
-  border-radius: 30px;
-  box-shadow:
-    inset 0 3px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(16,185,129,0.04),
-    inset 1.5px 0 0 rgba(255,255,255,0.85),
-    inset -1.5px 0 0 rgba(255,255,255,0.85),
-    0 12px 44px rgba(16,185,129,0.14),
-    0 3px 10px rgba(0,0,0,0.07),
-    0 0 0 1px rgba(16,185,129,0.10);
+/* ══════════════════════════════════════════════
+   FINAL POLISH — iOS 26 Liquid Glass Enhanced
+══════════════════════════════════════════════ */
+
+/* ── Nav specular top edge ── */
+nav { border-radius: 32px; }
+/* ── Chat timestamp ── */
+.chat-ts {
+  font-size:.65rem; color:var(--muted); font-weight:600;
+  padding:0 .2rem;
+  opacity:.7;
 }
+.chat-msg.user .chat-ts { text-align:right; }
+.chat-msg.bot .chat-ts { text-align:left; }
+
+/* ── Chat suggest chips (dynamic follow-ups) ── */
+.chat-suggest-row {
+  display:flex; flex-wrap:wrap; gap:.4rem;
+  padding:.3rem .4rem; margin-top:.2rem;
+  animation:msgIn .3s ease both;
+}
+.chat-suggest-chip {
+  padding:.3rem .85rem; border-radius:var(--r-full);
+  background:rgba(16,185,129,0.07); border:1px solid rgba(16,185,129,0.18);
+  color:var(--green-dk); font-size:.72rem; font-weight:700;
+  cursor:pointer; transition:all .2s ease; white-space:nowrap;
+  font-family:'Sora',sans-serif;
+}
+.chat-suggest-chip:hover {
+  background:var(--grad); color:white; border-color:transparent;
+  transform:translateY(-1px); box-shadow:0 4px 12px rgba(16,185,129,0.28);
+}
+
+/* ── Chat bubble link style ── */
+.chat-bubble a { color:var(--green-dk); font-weight:700; text-decoration:underline; }
+.chat-msg.user .chat-bubble a { color:rgba(255,255,255,0.9); }
+
+/* ── Chat unread badge ── */
+.chat-unread {
+  position:absolute; top:-5px; right:-5px;
+  width:18px; height:18px; border-radius:50%;
+  background:linear-gradient(135deg,#ef4444,#dc2626);
+  color:white; font-size:.62rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  border:2px solid var(--bg);
+  opacity:0; transform:scale(0);
+  transition:all .3s cubic-bezier(.34,1.5,.64,1);
+  pointer-events:none;
+}
+.chat-unread.show { opacity:1; transform:scale(1); }
+
+/* ── Nav AI btn needs relative position ── */
+.nav-ai-btn { position:relative; }
+
+/* ── Float chat button ── */
+#floatChatBtn {
+  position:fixed; bottom:6.5rem; right:1.8rem; z-index:5000;
+  width:54px; height:54px; border-radius:18px;
+  background:linear-gradient(145deg,#10b981,#059669);
+  color:white; border:none; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; font-size:1.25rem;
+  box-shadow:0 8px 28px rgba(16,185,129,0.5),inset 0 1.5px 0 rgba(255,255,255,0.25);
+  transition:all .3s cubic-bezier(.34,1.4,.64,1);
+}
+#floatChatBtn:hover { transform:scale(1.08) translateY(-3px); box-shadow:0 14px 40px rgba(16,185,129,0.6); }
+#floatChatBtn .fcb-ping {
+  position:absolute; top:6px; right:6px; width:9px; height:9px; border-radius:50%;
+  background:#fff; box-shadow:0 0 8px rgba(255,255,255,0.8); animation:pulse 2s infinite;
+}
+@media(min-width:1025px){ #floatChatBtn { display:none; } }
+
+/* ── Section progress dots (desktop only) ── */
+.sp-wrap {
+  position:fixed; right:1.4rem; top:50%; transform:translateY(-50%);
+  z-index:500; display:flex; flex-direction:column; gap:.55rem;
+  opacity:0; pointer-events:none; transition:opacity .4s ease;
+}
+.sp-wrap.vis { opacity:1; pointer-events:all; }
+.sp-dot {
+  width:9px; height:9px; border-radius:50%;
+  background:rgba(16,185,129,0.2); border:1.5px solid rgba(16,185,129,0.25);
+  cursor:pointer; transition:all .3s cubic-bezier(.34,1.4,.64,1); position:relative;
+}
+.sp-dot.on { background:var(--green); box-shadow:0 0 12px rgba(16,185,129,0.65); transform:scale(1.4); }
+.sp-dot:hover { background:var(--green2); transform:scale(1.2); }
+.sp-dot .sp-lbl {
+  position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  background:rgba(255,255,255,0.94); backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.9);
+  padding:.22rem .65rem; border-radius:20px;
+  font-size:.7rem; font-weight:700; color:var(--text); white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity .2s;
+  box-shadow:0 4px 12px rgba(16,185,129,0.1);
+}
+.sp-dot:hover .sp-lbl { opacity:1; }
+@media(max-width:1024px){ .sp-wrap { display:none !important; } }
+
+/* ── Toast notifications ── */
+#toastWrap {
+  position:fixed; bottom:5.5rem; right:1.8rem; z-index:99999;
+  display:flex; flex-direction:column; gap:.6rem; pointer-events:none;
+}
+.toast {
+  display:flex; align-items:center; gap:.8rem;
+  padding:.8rem 1.2rem; border-radius:16px;
+  background:rgba(255,255,255,0.94); backdrop-filter:blur(40px) saturate(220%);
+  border:1px solid rgba(255,255,255,0.98);
+  box-shadow:0 10px 36px rgba(16,185,129,0.2),inset 0 1.5px 0 rgba(255,255,255,1);
+  font-size:.82rem; font-weight:600; color:var(--text);
+  pointer-events:all; min-width:220px; max-width:300px;
+  animation:toastIn .38s cubic-bezier(.34,1.4,.64,1) both;
+}
+.toast.out { animation:toastOut .3s ease forwards; }
+.toast-icon {
+  width:30px; height:30px; border-radius:10px; background:var(--grad);
+  display:flex; align-items:center; justify-content:center; color:white; font-size:.88rem; flex-shrink:0;
+}
+.toast-err .toast-icon { background:linear-gradient(135deg,#ef4444,#dc2626); }
+@keyframes toastIn{from{opacity:0;transform:translateX(56px) scale(.92)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateX(56px) scale(.92)}}
+
+/* ── Form validation ── */
+.form-input.is-invalid,.form-textarea.is-invalid { border-color:rgba(239,68,68,0.45)!important; }
+.form-input.is-valid,.form-textarea.is-valid { border-color:rgba(16,185,129,0.4)!important; }
+.form-success-msg {
+  display:none; margin-top:.7rem; padding:1rem 1.2rem; border-radius:var(--r-md);
+  background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2);
+  color:var(--green-dk); font-size:.88rem; font-weight:600;
+  align-items:center; gap:.7rem;
+}
+.form-success-msg.show { display:flex; }
+
+/* ── Quick WhatsApp / LinkedIn below form ── */
+.contact-quick-btns {
+  display:flex; gap:.7rem; margin-top:.9rem; flex-wrap:wrap;
+}
+.contact-quick-btns a {
+  flex:1; min-width:120px; display:flex; align-items:center; justify-content:center; gap:.55rem;
+  padding:.7rem 1rem; border-radius:var(--r-full);
+  font-size:.82rem; font-weight:700; text-decoration:none; color:white;
+  transition:all .28s cubic-bezier(.34,1.3,.64,1);
+}
+.contact-quick-btns .wa-btn { background:linear-gradient(135deg,#25d366,#128c7e); box-shadow:0 4px 16px rgba(37,211,102,0.32); }
+.contact-quick-btns .li-btn { background:linear-gradient(135deg,#0077b5,#005885); box-shadow:0 4px 16px rgba(0,119,181,0.3); }
+.contact-quick-btns a:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.2); }
+
+/* ── Availability badge in hero ── */
+.avail-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.45rem 1.1rem; border-radius:var(--r-full);
+  background:rgba(16,185,129,0.10); border:1.5px solid rgba(16,185,129,0.25);
+  color:var(--green-dk); font-size:.78rem; font-weight:700;
+  margin-bottom:.8rem;
+}
+.avail-dot {
+  width:8px; height:8px; border-radius:50%; background:var(--green);
+  box-shadow:0 0 8px rgba(16,185,129,0.8); animation:pulse 2.2s ease-in-out infinite;
+}
+
+/* ── Body fade in ── */
+body { animation:bFadeIn .4s ease both; }
+@keyframes bFadeIn { from{opacity:0} to{opacity:1} }
+
+/* ── Mobile: 16px font on inputs to prevent iOS zoom ── */
+@media(max-width:768px){
+  .form-input,.form-textarea,.chat-input { font-size:16px !important; }
+  .scroll-top { bottom:1.3rem; right:1.3rem; width:44px; height:44px; }
+  #aiChatOverlay { padding-top:4rem; padding-right:.8rem; padding-left:.8rem; justify-content:center; align-items:flex-end; }
+  #aiChatPanel { width:100%; max-width:100%; height:clamp(460px,78vh,620px); border-radius:28px 28px 20px 20px; }
+}
+
+/* ── Responsive breakpoints (complete) ── */
+@media(min-width:1920px){
+  html{font-size:18px} .container{max-width:1720px;padding:0 4%}
+  nav{max-width:1620px} section{padding:7rem 0}
+}
+@media(min-width:1440px) and (max-width:1919px){
+  html{font-size:17px} .container{max-width:1380px;padding:0 4%}
+  nav{max-width:1320px;width:calc(100% - 5rem)}
+}
+@media(min-width:1280px) and (max-width:1439px){
+  html{font-size:16px} .container{max-width:1240px}
+}
+@media(min-width:1024px) and (max-width:1279px){
+  html{font-size:15.5px} .container{max-width:980px;padding:0 2.5rem}
+  nav{width:calc(100%-3rem)} .nav-link{font-size:.74rem;padding:.3rem .65rem}
+}
+@media(max-width:479px){
+  html{font-size:14px} section{padding:3rem 0}
+  .sec-title{font-size:clamp(1.8rem,6vw,2.4rem)}
+  .hero-name{font-size:1.9rem} .hero-name-top{font-size:1.4rem}
+  .cert-stats{grid-template-columns:1fr 1fr}
+  .featured-proj{padding:1.5rem} .featured-proj-title{font-size:1.45rem}
+}
+
+/* ── Print ── */
+@media print {
+  .reading-progress,.sp-wrap,#cur,#cur-r,.particles,#floatChatBtn,
+  #aiChatOverlay,.scroll-top,.wov,header,#toastWrap { display:none !important; }
+  body { background:white !important; color:black !important; animation:none !important; }
+  section { padding:2rem 0 !important; break-inside:avoid; }
+}
+
 header.scrolled nav { border-radius: 26px; }
-nav ul { border-radius: 22px; }
-.nav-link { border-radius: 18px; }
+nav ul { border-radius: 24px; }
+.nav-link { border-radius: 20px; }
+
 /* ── Section title glow ── */
 .sec-title { text-shadow: 0 0 40px rgba(16,185,129,0.10); }
+
 /* ── About photo frame ── */
 .about-photo-frame {
   width:100%; aspect-ratio:4/3; border-radius:var(--r-xl);
@@ -2833,6 +3129,7 @@ nav ul { border-radius: 22px; }
   font-size:.82rem;font-weight:700;color:var(--green-dk);
 }
 .about-photo-badge i { color:var(--green);font-size:.9rem; }
+
 /* ── Exp card shimmer ── */
 .exp-card::after {
   content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;
@@ -2840,30 +3137,394 @@ nav ul { border-radius: 22px; }
   transition:left .7s ease;pointer-events:none;
 }
 .exp-card:hover::after { left:150%; }
-/* ── Project card hover ring ── */
 .proj-card:hover { box-shadow:var(--sh-xl),0 0 0 2px rgba(16,185,129,0.18); }
-/* ── Award hover ── */
 .award-card:hover { border-color:rgba(245,158,11,0.2); box-shadow:0 24px 64px rgba(0,0,0,0.45),0 0 0 1px rgba(245,158,11,0.1); }
-/* ── Form ── */
 .form-input:focus,.form-textarea:focus { box-shadow:0 0 0 3px rgba(16,185,129,0.14),0 0 20px rgba(16,185,129,0.08); }
-/* ── Scroll top pill ── */
 .scroll-top { border-radius:20px;width:48px;height:48px; }
-/* ── Reading progress glow ── */
 .reading-progress { height:2px;box-shadow:0 0 12px rgba(16,185,129,0.8),0 0 24px rgba(16,185,129,0.4); }
-/* ── Footer logo ── */
 .footer-logo { letter-spacing:-1px; }
-/* ── Skill bar glow ── */
 .skill-bar-fill { box-shadow:0 0 8px rgba(16,185,129,0.4),0 0 16px rgba(16,185,129,0.15); }
-/* ── Tool card hover ── */
 .tool-card:hover { transform:translateY(-5px);box-shadow:var(--sh-lg);background:rgba(255,255,255,0.88); }
-/* ── Floating card enhanced ── */
 .hero-floating-card { border-radius:18px;background:rgba(255,255,255,0.9);box-shadow:0 8px 32px rgba(16,185,129,0.14),0 2px 8px rgba(0,0,0,0.06),inset 0 1.5px 0 rgba(255,255,255,1); }
-/* ── Responsive overrides ── */
-@media(max-width:768px){nav{border-radius:22px;}}
-@media(max-width:480px){nav{border-radius:18px;}}
+
+/* ══════════════════════════════════════
+   HERO AVATAR — iOS 26 Orbital System
+══════════════════════════════════════ */
+.hero-avatar-wrap {
+  position:relative; width:400px; height:400px;
+  display:flex; align-items:center; justify-content:center;
+}
+/* Pulsing glow halo */
+.hero-avatar-glow {
+  position:absolute; inset:-20px; border-radius:50%;
+  background:radial-gradient(circle, rgba(16,185,129,0.16) 0%, rgba(52,211,153,0.08) 40%, transparent 70%);
+  animation:glowPulse 4s ease-in-out infinite;
+  pointer-events:none; z-index:0;
+}
+@keyframes glowPulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.07)}}
+
+/* Ring 3 — wider pulsing */
+.hero-avatar-ring-3 {
+  position:absolute; inset:-28px; border-radius:50%;
+  border:1px solid rgba(16,185,129,0.14);
+  animation:spin 28s linear infinite;
+}
+/* Ring 4 — outermost faint */
+.hero-avatar-ring-4 {
+  position:absolute; inset:-50px; border-radius:50%;
+  border:1px dashed rgba(52,211,153,0.09);
+  animation:spin 48s linear infinite reverse;
+}
+
+/* Orbiting dots */
+.hero-orbit-dot {
+  position:absolute; border-radius:50%; z-index:3;
+  top:50%; left:50%;
+}
+.orbit-green {
+  width:13px; height:13px; margin:-6.5px 0 0 -6.5px;
+  background:radial-gradient(circle, #6ee7b7, #10b981);
+  box-shadow:0 0 18px rgba(16,185,129,1), 0 0 36px rgba(16,185,129,0.5);
+  animation:orbitA 11s linear infinite;
+}
+.orbit-gold {
+  width:10px; height:10px; margin:-5px 0 0 -5px;
+  background:radial-gradient(circle, #fde68a, #f59e0b);
+  box-shadow:0 0 14px rgba(245,158,11,0.95), 0 0 28px rgba(245,158,11,0.4);
+  animation:orbitB 17s linear infinite reverse;
+}
+.orbit-teal {
+  width:8px; height:8px; margin:-4px 0 0 -4px;
+  background:radial-gradient(circle, #a7f3d0, #34d399);
+  box-shadow:0 0 12px rgba(52,211,153,0.95), 0 0 22px rgba(52,211,153,0.4);
+  animation:orbitC 23s linear infinite;
+}
+@keyframes orbitA {
+  from { transform:rotate(0deg) translateX(205px); }
+  to   { transform:rotate(360deg) translateX(205px); }
+}
+@keyframes orbitB {
+  from { transform:rotate(60deg) translateX(220px); }
+  to   { transform:rotate(420deg) translateX(220px); }
+}
+@keyframes orbitC {
+  from { transform:rotate(120deg) translateX(196px); }
+  to   { transform:rotate(480deg) translateX(196px); }
+}
+
+/* Avatar image frame */
+.hero-avatar-bg {
+  width:320px; height:320px;
+  border:2px solid rgba(255,255,255,0.92);
+  box-shadow:
+    0 0 0 7px rgba(16,185,129,0.07),
+    0 0 0 14px rgba(16,185,129,0.04),
+    0 40px 80px rgba(16,185,129,0.22),
+    0 12px 32px rgba(0,0,0,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.98);
+  position:relative; z-index:1;
+}
+
+/* Status badge on avatar */
+.hero-avatar-status {
+  position:absolute; bottom:-10px; left:50%; transform:translateX(-50%);
+  display:flex; align-items:center; gap:.5rem;
+  padding:.45rem 1.1rem;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(24px) saturate(200%);
+  border:1px solid rgba(255,255,255,0.98);
+  border-radius:var(--r-full);
+  font-size:.75rem; font-weight:700; color:var(--green-dk);
+  box-shadow:0 6px 20px rgba(16,185,129,0.2), inset 0 1px 0 rgba(255,255,255,1);
+  white-space:nowrap; z-index:4;
+  letter-spacing:.3px;
+}
+.hero-avatar-status .has-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 8px rgba(16,185,129,0.9);
+  animation:pulse 2s infinite;
+  flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   AI CHATBOT — iOS 26 Liquid Glass Siri-style Interface
+═══════════════════════════════════════════════════════ */
+#aiChatOverlay {
+  display:none;
+  position:fixed; inset:0; z-index:8000;
+  background:rgba(0,0,0,0.08);
+  backdrop-filter:blur(4px);
+  align-items:flex-start; justify-content:flex-end;
+  padding-top:5.5rem; padding-right:2rem;
+}
+#aiChatOverlay.open { display:flex; }
+
+#aiChatPanel {
+  width:420px; max-width:calc(100vw - 2rem);
+  height:clamp(480px,70vh,680px);
+  display:flex; flex-direction:column;
+  border-radius:32px;
+  background:rgba(228,244,237,0.78);
+  backdrop-filter:blur(64px) saturate(320%) brightness(1.06);
+  -webkit-backdrop-filter:blur(64px) saturate(320%) brightness(1.06);
+  border:1px solid rgba(255,255,255,0.95);
+  border-bottom:1px solid rgba(255,255,255,0.6);
+  box-shadow:
+    inset 0 3px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(16,185,129,0.06),
+    0 32px 80px rgba(16,185,129,0.22),
+    0 8px 32px rgba(0,0,0,0.12),
+    0 0 0 0.5px rgba(16,185,129,0.18);
+  overflow:hidden;
+  animation:chatPop .38s cubic-bezier(.34,1.4,.64,1) both;
+  position:relative;
+}
+@keyframes chatPop{
+  from{opacity:0;transform:translateY(-16px) scale(.94)}
+  to{opacity:1;transform:none}
+}
+
+/* Specular top edge on panel */
+#aiChatPanel::before {
+  content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+  background:linear-gradient(90deg,transparent,rgba(16,185,129,0.6),rgba(110,231,183,0.8),rgba(16,185,129,0.6),transparent);
+  border-radius:999px; pointer-events:none; z-index:10;
+}
+
+/* Chat header */
+.chat-header {
+  display:flex; align-items:center; gap:1rem;
+  padding:1.2rem 1.4rem 1rem;
+  border-bottom:1px solid rgba(255,255,255,0.5);
+  flex-shrink:0; position:relative;
+}
+.chat-header-avatar {
+  width:44px; height:44px; border-radius:var(--r-md);
+  background:linear-gradient(145deg,#10b981,#059669);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.3rem; flex-shrink:0;
+  box-shadow:0 4px 16px rgba(16,185,129,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+  position:relative;
+}
+.chat-header-avatar::after {
+  content:''; position:absolute; bottom:-2px; right:-2px;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--green);
+  border:2.5px solid rgba(228,244,237,0.9);
+  box-shadow:0 0 8px rgba(16,185,129,0.8);
+  animation:aiPing 2s ease-in-out infinite;
+}
+.chat-header-info { flex:1; min-width:0; }
+.chat-header-name {
+  font-size:.95rem; font-weight:800; color:var(--text);
+  letter-spacing:-.2px; display:block;
+}
+.chat-header-sub {
+  font-size:.72rem; color:var(--green-dk); font-weight:600;
+  letter-spacing:.5px; text-transform:uppercase;
+  display:flex; align-items:center; gap:.35rem; margin-top:.1rem;
+}
+.chat-live-dot {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--green);
+  animation:pulse 2s infinite; flex-shrink:0;
+}
+.chat-close-btn {
+  width:30px; height:30px; border-radius:50%;
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(255,255,255,0.88);
+  color:var(--muted); font-size:.8rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s ease; flex-shrink:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.chat-close-btn:hover { background:rgba(255,255,255,0.85); color:var(--text); transform:scale(1.08); }
+
+/* Quick suggestion chips */
+.chat-chips {
+  display:flex; gap:.5rem; overflow-x:auto; padding:.8rem 1.4rem .5rem;
+  scrollbar-width:none; flex-shrink:0;
+}
+.chat-chips::-webkit-scrollbar { display:none; }
+.chat-chip {
+  padding:.35rem .9rem; border-radius:var(--r-full); white-space:nowrap;
+  background:rgba(255,255,255,0.72); border:1px solid rgba(255,255,255,0.92);
+  color:var(--green-dk); font-size:.72rem; font-weight:700; cursor:pointer;
+  transition:all .2s ease; flex-shrink:0;
+  box-shadow:0 2px 8px rgba(16,185,129,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+  letter-spacing:.1px;
+}
+.chat-chip:hover {
+  background:var(--grad); color:white; border-color:transparent;
+  transform:translateY(-2px);
+  box-shadow:0 5px 16px rgba(16,185,129,0.35);
+}
+
+/* Messages area */
+.chat-messages {
+  flex:1; overflow-y:auto; padding:1rem 1.4rem;
+  display:flex; flex-direction:column; gap:1rem;
+  scrollbar-width:thin; scrollbar-color:rgba(16,185,129,0.2) transparent;
+}
+.chat-messages::-webkit-scrollbar { width:4px; }
+.chat-messages::-webkit-scrollbar-thumb { background:rgba(16,185,129,0.2); border-radius:4px; }
+
+/* Message bubbles */
+.chat-msg {
+  display:flex; gap:.7rem; align-items:flex-end; max-width:92%;
+  animation:msgIn .3s cubic-bezier(.34,1.3,.64,1) both;
+}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:none}}
+.chat-msg.user { flex-direction:row-reverse; margin-left:auto; }
+.chat-msg-icon {
+  width:28px; height:28px; border-radius:var(--r-sm);
+  background:linear-gradient(145deg,#10b981,#059669);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.75rem; flex-shrink:0;
+  box-shadow:0 3px 10px rgba(16,185,129,0.3);
+}
+.chat-msg.user .chat-msg-icon {
+  background:rgba(255,255,255,0.72); border:1px solid rgba(255,255,255,0.9);
+  color:var(--green-dk);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.9), 0 2px 6px rgba(0,0,0,0.06);
+}
+.chat-bubble {
+  padding:.72rem 1rem; border-radius:18px;
+  font-size:.875rem; line-height:1.65; font-weight:500;
+  max-width:100%;
+}
+.chat-msg.bot .chat-bubble {
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(255,255,255,0.92);
+  border-bottom-left-radius:5px;
+  color:var(--text);
+  box-shadow:0 4px 16px rgba(16,185,129,0.1), inset 0 1px 0 rgba(255,255,255,0.95);
+}
+.chat-msg.user .chat-bubble {
+  background:linear-gradient(145deg,#10b981,#059669);
+  border:1px solid rgba(16,185,129,0.2);
+  border-bottom-right-radius:5px;
+  color:white;
+  box-shadow:0 4px 18px rgba(16,185,129,0.38), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Typing indicator */
+.chat-typing {
+  display:flex; gap:.7rem; align-items:flex-end;
+  animation:msgIn .3s ease both;
+}
+.typing-bubble {
+  padding:.7rem 1rem; border-radius:18px; border-bottom-left-radius:5px;
+  background:rgba(255,255,255,0.82);
+  border:1px solid rgba(255,255,255,0.92);
+  display:flex; gap:.4rem; align-items:center;
+  box-shadow:0 4px 16px rgba(16,185,129,0.1);
+}
+.typing-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--green); opacity:.5;
+  animation:typingDot 1.4s ease-in-out infinite;
+}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingDot{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-5px)}}
+
+/* Chat input bar */
+.chat-input-bar {
+  display:flex; gap:.6rem; align-items:flex-end;
+  padding:.9rem 1.2rem 1.1rem;
+  border-top:1px solid rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.22);
+  flex-shrink:0;
+}
+.chat-input {
+  flex:1; padding:.65rem 1rem; border-radius:18px;
+  background:rgba(255,255,255,0.75);
+  border:1px solid rgba(255,255,255,0.95);
+  color:var(--text); font-family:'Sora',sans-serif;
+  font-size:.85rem; outline:none; resize:none;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.9), 0 2px 8px rgba(16,185,129,0.08);
+  transition:all .2s ease; max-height:100px; line-height:1.5;
+  backdrop-filter:blur(12px);
+}
+.chat-input::placeholder { color:var(--muted); }
+.chat-input:focus {
+  border-color:rgba(16,185,129,0.4);
+  background:rgba(255,255,255,0.92);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,1), 0 0 0 3px rgba(16,185,129,0.12);
+}
+.chat-send-btn {
+  width:38px; height:38px; border-radius:14px; flex-shrink:0;
+  background:linear-gradient(145deg,#10b981,#059669);
+  border:none; color:white; font-size:.9rem; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 16px rgba(16,185,129,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition:all .22s cubic-bezier(.34,1.3,.64,1);
+}
+.chat-send-btn:hover { transform:scale(1.1) translateY(-2px); box-shadow:0 8px 24px rgba(16,185,129,0.55); }
+.chat-send-btn:active { transform:scale(.95); }
+
+/* Responsive */
+@media(max-width:768px){
+  nav { border-radius:22px; }
+  .hero-avatar-ring-3,.hero-avatar-ring-4,.hero-orbit-dot,.hero-avatar-glow,.hero-avatar-status { display:none; }
+  .hero-avatar-wrap { width:220px; height:220px; }
+  .hero-avatar-bg { width:190px; height:190px; }
+  #aiChatOverlay { padding-top:4.5rem; padding-right:1rem; padding-left:1rem; justify-content:center; }
+  #aiChatPanel { width:100%; max-width:100%; height:clamp(440px,75vh,580px); border-radius:26px; }
+  .nav-actions { gap:.4rem; }
+  .nav-cta { padding:.42rem 1rem; font-size:.76rem; }
+}
+@media(max-width:480px){
+  nav { border-radius:18px; }
+  .nav-cta { display:none; }
+  #aiChatPanel { border-radius:20px; }
+}
 </style>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<!-- ═══════════════════════════════
+     AI CHAT PANEL (Portal)
+═══════════════════════════════ -->
+<div id="aiChatOverlay" onclick="if(event.target===this)toggleAIChat()">
+  <div id="aiChatPanel">
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header-avatar">🤖</div>
+      <div class="chat-header-info">
+        <span class="chat-header-name">Umer's AI Assistant</span>
+        <div class="chat-header-sub">
+          <div class="chat-live-dot"></div>
+          Powered by Portfolio Intelligence
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+    </div>
+    <!-- Quick chips -->
+    <div class="chat-chips" id="chatChips">
+      <button class="chat-chip" onclick="chipAsk('Who is Umer Faheem?')">👤 Who is Umer?</button>
+      <button class="chat-chip" onclick="chipAsk('What are his skills?')">⚡ Skills</button>
+      <button class="chat-chip" onclick="chipAsk('Tell me about his projects')">🚀 Projects</button>
+      <button class="chat-chip" onclick="chipAsk('What is his experience?')">💼 Experience</button>
+      <button class="chat-chip" onclick="chipAsk('What certifications does he have?')">🏅 Certs</button>
+      <button class="chat-chip" onclick="chipAsk('Download his CV')">📄 CV &amp; Cover Letter</button>
+    </div>
+    <!-- Messages -->
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="chat-msg-icon">✨</div>
+        <div class="chat-bubble">Hey there! 👋 I'm Umer's personal AI assistant. I know everything about his portfolio, skills, experience, and journey.<br><br>Ask me anything — I'm here to help you get to know him better!</div>
+      </div>
+    </div>
+    <!-- Input -->
+    <div class="chat-input-bar">
+      <textarea class="chat-input" id="chatInput" placeholder="Ask me anything about Umer…" rows="1" ></textarea>
+      <button class="chat-send-btn" onclick="sendChatMsg()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+<script>
 /* ══════════ CURSOR ══════════ */
 const cur = document.getElementById('cur');
 const curR = document.getElementById('cur-r');
@@ -2933,14 +3594,65 @@ window.addEventListener('scroll',()=>{
   }
 });
 
-/* ══════════ FORM SUBMIT ══════════ */
+/* ══════════ CONTACT FORM ══════════ */
+function showToast(msg, type){
+  const wrap = document.getElementById('toastWrap');
+  if(!wrap) return;
+  const t = document.createElement('div');
+  t.className = 'toast' + (type==='err'?' toast-err':'');
+  t.innerHTML = '<div class="toast-icon"><i class="fas fa-'+(type==='err'?'exclamation-circle':'check-circle')+'"></i></div><span>'+msg+'</span>';
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),320); }, 3800);
+}
+
 function handleFormSubmit(btn){
-  btn.innerHTML='<i class="fas fa-check"></i> Message Sent!';
+  const nameEl    = document.getElementById('cf-name');
+  const emailEl   = document.getElementById('cf-email');
+  const subjectEl = document.getElementById('cf-subject');
+  const msgEl     = document.getElementById('cf-message');
+  const name    = nameEl ? nameEl.value.trim() : '';
+  const email   = emailEl ? emailEl.value.trim() : '';
+  const subject = subjectEl ? subjectEl.value.trim() : '';
+  const message = msgEl ? msgEl.value.trim() : '';
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validate
+  let valid = true;
+  [nameEl, msgEl].forEach(el => {
+    if(el && !el.value.trim()){ el.classList.add('is-invalid'); el.classList.remove('is-valid'); valid=false; }
+    else if(el){ el.classList.remove('is-invalid'); el.classList.add('is-valid'); }
+  });
+  if(!email || !emailRe.test(email)){
+    if(emailEl){ emailEl.classList.add('is-invalid'); emailEl.classList.remove('is-valid'); }
+    valid=false;
+  } else if(emailEl){ emailEl.classList.remove('is-invalid'); emailEl.classList.add('is-valid'); }
+
+  if(!valid){
+    showToast('Please fill in all required fields correctly.','err');
+    btn.innerHTML='<i class="fas fa-exclamation-circle"></i> Please fill all fields';
+    btn.style.background='linear-gradient(135deg,#ef4444,#dc2626)';
+    setTimeout(()=>{ btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message'; btn.style.background=''; },2800);
+    return;
+  }
+
+  const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
+  const sub  = encodeURIComponent(subject || 'Portfolio Contact from '+name);
+  window.open('mailto:m.umer.faheem@gmail.com?subject='+sub+'&body='+body, '_self');
+
+  btn.innerHTML='<i class="fas fa-check"></i> Opening Email Client…';
   btn.style.background='linear-gradient(135deg,#059669,#10b981)';
+  btn.disabled = true;
+
+  const successEl = document.getElementById('formSuccessMsg');
+  if(successEl) successEl.classList.add('show');
+  showToast('Email client opened! Click Send to deliver your message.','ok');
+
   setTimeout(()=>{
     btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
-    btn.style.background='';
-  },3000);
+    btn.style.background=''; btn.disabled=false;
+    if(successEl) successEl.classList.remove('show');
+    [nameEl,emailEl,subjectEl,msgEl].forEach(el=>{ if(el){ el.value=''; el.classList.remove('is-valid','is-invalid'); }});
+  }, 5000);
 }
 
 /* ══════════ ACTIVE NAV HIGHLIGHT ══════════ */
@@ -2961,13 +3673,12 @@ const roles=['Frontend Developer','BI Enthusiast','ERP Implementer','UI/UX Desig
 let ri=0,ci=0,typing=true;
 const tagline=document.querySelector('.hero-tagline');
 if(tagline){
-  const originalText='Frontend Developer & BI Enthusiast';
   function typeRole(){
     const current=roles[ri];
     if(typing){
       if(ci<=current.length){
         tagline.childNodes[tagline.childNodes.length-1].textContent=current.slice(0,ci)+'|';
-            ci++;setTimeout(typeRole,80);
+        ci++;setTimeout(typeRole,80);
       } else{typing=false;setTimeout(typeRole,2000)}
     } else{
       if(ci>0){tagline.childNodes[tagline.childNodes.length-1].textContent=current.slice(0,ci-1)+'|';ci--;setTimeout(typeRole,45)}
@@ -2984,18 +3695,346 @@ if(tagline){
   const bg=avatar.querySelector('.hero-avatar-bg');
   avatar.addEventListener('mousemove',(e)=>{
     const rect=avatar.getBoundingClientRect();
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-    const cx=rect.width/2;
-    const cy=rect.height/2;
-    const rx=-(y-cy)/18;
-    const ry=(x-cx)/18;
+    const x=e.clientX-rect.left, y=e.clientY-rect.top;
+    const cx=rect.width/2, cy=rect.height/2;
+    const rx=-(y-cy)/18, ry=(x-cx)/18;
     if(bg)bg.style.transform=`perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.04)`;
   });
   avatar.addEventListener('mouseleave',()=>{
     if(bg)bg.style.transform='perspective(600px) rotateX(0) rotateY(0) scale(1)';
   });
 })();
+
+
+/* ══════════ SECTION PROGRESS DOTS ══════════ */
+(function(){
+  const wrap = document.getElementById('spWrap');
+  if(!wrap) return;
+  const dots = wrap.querySelectorAll('.sp-dot');
+  const ids  = Array.from(dots).map(d=>d.dataset.t);
+  dots.forEach(d=>{
+    d.addEventListener('click',()=>{
+      const el=document.getElementById(d.dataset.t);
+      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  function update(){
+    let active=ids[0];
+    ids.forEach(id=>{ const s=document.getElementById(id); if(s&&window.scrollY>=s.offsetTop-180) active=id; });
+    dots.forEach(d=>d.classList.toggle('on',d.dataset.t===active));
+    wrap.classList.toggle('vis', window.scrollY>200);
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+/* ══════════ COUNTER ANIMATION ══════════ */
+(function(){
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target;
+      const raw=el.textContent.replace(/[^0-9.]/g,'');
+      const num=parseFloat(raw); if(!num) return;
+      const suf=el.textContent.replace(/[0-9.]/g,'').trim();
+      let cur=0; const dur=1400, step=16;
+      const timer=setInterval(()=>{
+        cur+=num/(dur/step);
+        if(cur>=num){ el.textContent=num+suf; clearInterval(timer); return; }
+        el.textContent=(num<10?cur.toFixed(1):Math.floor(cur))+suf;
+      },step);
+      obs.unobserve(el);
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.hero-stat-num,.cert-stat-num,.extra-num,.about-stat-mini .num').forEach(el=>obs.observe(el));
+})();
+
+/* ══════════ CARD TILT EFFECT ══════════ */
+document.querySelectorAll('.cert-card,.edu-card,.proj-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    card.style.transform=`perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave',()=>{ card.style.transform=''; });
+});
+
+/* ══════════ SKILL BARS ON INTERSECT ══════════ */
+const bObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.querySelectorAll('.skill-bar-fill').forEach((b,i)=>{
+      setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },i*55);
+    });
+    bObs.unobserve(e.target);
+  });
+},{threshold:0.15});
+document.querySelectorAll('.skills-panel').forEach(p=>bObs.observe(p));
+
+
+/* ══════════════════════════════════════════════════════
+   AI CHATBOT v2 — Fixed + Advanced Portfolio Intelligence
+══════════════════════════════════════════════════════ */
+let chatOpen = false;
+let chatHistory = [];
+let unreadCount = 0;
+
+function toggleAIChat(){
+  chatOpen = !chatOpen;
+  const overlay = document.getElementById('aiChatOverlay');
+  if(!overlay) return;
+  if(chatOpen){
+    overlay.style.display = 'flex';
+    requestAnimationFrame(()=>{ overlay.classList.add('open'); });
+    setTimeout(()=>{
+      const inp = document.getElementById('chatInput');
+      if(inp) inp.focus();
+    }, 380);
+    // Clear unread
+    unreadCount = 0;
+    updateUnreadBadge();
+  } else {
+    overlay.classList.remove('open');
+    setTimeout(()=>{ overlay.style.display = 'none'; }, 300);
+  }
+  // sync float button
+  const fb = document.getElementById('floatChatBtn');
+  if(fb) fb.style.opacity = chatOpen ? '0' : '1';
+}
+
+function updateUnreadBadge(){
+  const b = document.getElementById('chatUnreadBadge');
+  if(!b) return;
+  if(unreadCount > 0){ b.textContent = unreadCount; b.classList.add('show'); }
+  else { b.classList.remove('show'); }
+}
+
+function chipAsk(q){
+  const inp = document.getElementById('chatInput');
+  if(inp){ inp.value = q; }
+  sendChatMsg();
+}
+
+function createMsgEl(text, type){
+  const div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+
+  const icon = document.createElement('div');
+  icon.className = 'chat-msg-icon';
+  if(type === 'bot'){
+    icon.innerHTML = '<span style="font-size:.85rem">✨</span>';
+  } else {
+    icon.innerHTML = '<i class="fas fa-user" style="font-size:.72rem"></i>';
+  }
+
+  const bubble = document.createElement('div');
+  bubble.className = 'chat-bubble';
+  bubble.innerHTML = text;
+
+  const ts = document.createElement('div');
+  ts.className = 'chat-ts';
+  const now = new Date();
+  ts.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+
+  div.appendChild(icon);
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex;flex-direction:column;gap:.25rem;max-width:100%';
+  wrap.appendChild(bubble);
+  wrap.appendChild(ts);
+  div.appendChild(wrap);
+
+  return div;
+}
+
+function addMessage(text, type){
+  const msgs = document.getElementById('chatMessages');
+  if(!msgs) return null;
+  const div = createMsgEl(text, type);
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping(){
+  const msgs = document.getElementById('chatMessages');
+  if(!msgs) return;
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot'; div.id = 'chatTyping';
+  div.innerHTML = '<div class="chat-msg-icon"><span style="font-size:.85rem">✨</span></div><div class="typing-bubble"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideTyping(){
+  const t = document.getElementById('chatTyping');
+  if(t) t.remove();
+}
+
+/* ── Extended Knowledge Base ── */
+const KB = {
+  identity: {
+    k:['who','umer','name','person','introduce','yourself','about','he','him','profile','background'],
+    r:`Muhammad Umer Faheem is a passionate final-year BBIS student at UMT, Lahore — blending <strong>frontend development</strong>, <strong>business intelligence</strong>, and <strong>system analysis</strong> into a unified, results-driven approach.<br><br>🎓 <strong>8th Semester</strong> · University of Management & Technology<br>📍 <strong>Lahore, Pakistan</strong><br>🚀 Actively open to full-time opportunities in Tech, Data, or ERP roles.<br><br>A builder at heart — Umer turns complex ideas into functional, elegant systems.`
+  },
+  skills: {
+    k:['skill','know','tech','stack','language','tool','capable','expertise','html','css','javascript','python','sql','power bi','erp','odoo','frontend','code','programming'],
+    r:`Umer has a well-rounded technical toolkit:<br><br>🖥️ <strong>Frontend:</strong> HTML5 · CSS3 · JavaScript · WordPress · Responsive Design<br>📊 <strong>Data & BI:</strong> Power BI · SQL · Oracle DB · Data Annotation (CVAT/YOLO/COCO)<br>🏢 <strong>Enterprise:</strong> Odoo ERP · SAP Basics · Oracle HR<br>🎨 <strong>Design:</strong> Figma · Photoshop · Illustrator · Canva · UI/UX<br>💼 <strong>Productivity:</strong> MS Excel · PowerPoint · MS Project · Notion · JIRA<br><br>Also a <strong>Python enthusiast</strong> with Google IT Automation certification! 🐍`
+  },
+  experience: {
+    k:['experience','work','job','internship','company','career','professional','mga','nex pred','data annotator','hr','intern','role','worked'],
+    r:`Umer has real-world experience across 3 distinct domains:<br><br>🤖 <strong>Data Annotator — Nex pred Solutions</strong><br><em>Feb–Mar 2026 · Remote</em><br>Processed video datasets for computer vision AI. Worked with CVAT, converted between YOLO/COCO formats, managed end-to-end ML data pipelines.<br><br>🏭 <strong>HR Internee — MGA Industries Pvt. Ltd.</strong><br><em>Aug–Sep 2025 · Lahore</em><br>Supported talent acquisition, onboarding & payroll operations using Oracle HR in a large-scale manufacturing environment.<br><br>💻 <strong>Frontend UI Development</strong><br>Hands-on experience designing responsive web interfaces across academic and freelance projects.`
+  },
+  projects: {
+    k:['project','build','made','portfolio','erp','artisan','aura','odoo','icaisai','capstone','developed','created','work','built'],
+    r:`Umer's flagship project — <strong>Artisan Aura Creations ERP System</strong>:<br><br>🏆 <strong>ICAISAI'26 Selectee</strong> — Top 3 of all HSM UMT final projects, evaluated by a DevOps & Cloud expert from Nex Skill.<br><br>Built a full-scale <strong>Odoo ERP</strong> for a sustainable leather goods brand:<br>✅ CRM · Sales · Inventory · Manufacturing · HR<br>✅ Custom workflows · BI dashboards · Process automation<br><br>Other work includes Power BI dashboards, web interfaces, Oracle DB schemas, and ML data annotation pipelines.`
+  },
+  education: {
+    k:['education','degree','university','umt','bbis','study','student','semester','cgpa','academic','gpa','qualification','graduate'],
+    r:`🎓 <strong>BBIS — Bachelor of Business Information Systems</strong><br>University of Management and Technology (UMT), Lahore<br>Currently in <strong>8th (Final) Semester</strong> · 2022–2026<br><br>This degree uniquely bridges <strong>business strategy</strong> and <strong>technology</strong> — covering ERP systems, database design, information systems analysis, and digital business transformation.<br><br>It's what allows Umer to speak both the language of business and tech fluently. 🤝`
+  },
+  certifications: {
+    k:['cert','certification','course','google','ibm','coursera','microsoft','sap','odoo','certified','training','learn','qualified'],
+    r:`Umer holds <strong>10+ verified certifications</strong> from globally recognized platforms:<br><br>🔵 <strong>Google</strong> — IT Automation with Python · Project Management Foundations<br>🟡 <strong>Microsoft / Uni Athena (Cambridge UK)</strong> — Power BI Data Analysis<br>🟢 <strong>Coursera</strong> — WordPress Development · JIRA Scrum Management<br>🔴 <strong>SAP</strong> — Managing Basic Business Scenarios<br>🟣 <strong>Odoo</strong> — Odoo 14 Essentials<br>🔵 <strong>IBM</strong> — Developing Interpersonal Skills<br>🟦 <strong>Simplilearn</strong> — Canva Graphic Design<br><br><em>All verified. All practical. All earned with dedication. ✨</em>`
+  },
+  contact: {
+    k:['contact','email','reach','hire','phone','whatsapp','linkedin','github','connect','talk','message','opportunity','reach out','get in touch'],
+    r:`You can reach Umer through multiple channels:<br><br>📧 <strong>Email:</strong> m.umer.faheem@gmail.com<br>📞 <strong>Phone:</strong> 031-443-33022<br>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/923258148564" target="_blank" style="color:var(--green-dk);font-weight:700">032-581-48564</a><br>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">youknowumer</a><br>🐙 <strong>GitHub:</strong> <a href="https://github.com/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">youknowumer</a><br>📍 <strong>Location:</strong> Iqbal Town, Lahore 🇵🇰<br><br>Or scroll to <strong>Let's Connect</strong> to send a direct message! 👇`
+  },
+  cv: {
+    k:['cv','resume','download','cover letter','pdf','document','hire','apply','get cv','send cv'],
+    r:`You can download Umer's documents directly:<br><br>📄 <strong>CV / Resume</strong> — Full professional resume, PDF format · Updated 2026<br>✉️ <strong>Cover Letter</strong> — Tailored application letter, DOCX format<br><br>👉 Scroll to the <strong>"Download My Documents"</strong> section and click to download instantly. Both files are ready for recruiters and hiring managers.`
+  },
+  awards: {
+    k:['award','recognition','achievement','icaisai','trophy','honor','selected','exhibition','won','prize','top'],
+    r:`Umer's proudest recognition:<br><br>🏆 <strong>ICAISAI'26 Project Exhibition Selectee</strong><br>Selected as 1 of only <strong>3 projects</strong> for exhibition at the International Conference on AI, Systems & Intelligent Applications 2026.<br><br>Evaluated by a <strong>DevOps & Cloud industry expert</strong> from Nex Skill — recognizing technical depth and business applicability.<br><br>Also served as <strong>Capstone Project Lead</strong> at UMT, guiding his team through the full ERP implementation lifecycle. 🎯`
+  },
+  dedication: {
+    k:['dedication','passionate','drive','motivation','why','philosophy','approach','work ethic','hardworking','committed','values','mindset'],
+    r:`What makes Umer stand out isn't just skill — it's his <em>mindset</em>:<br><br>💡 Technology should solve <strong>real problems</strong>, not just look impressive<br>🎯 Obsessively <strong>detail-oriented</strong> — pixel-perfect UI or clean DB schema<br>📈 <strong>Continuous learner</strong> — 10+ certs, multiple internships, award-winning capstone while studying full-time<br>🤝 Thrives in <strong>collaborative environments</strong> bridging business & tech<br><br><em>"Build systems that are as beautiful on the inside as they appear on the outside."</em>`
+  },
+  availability: {
+    k:['available','open to work','looking for','seeking','job search','freelance','hire','available for'],
+    r:`Yes! Umer is <strong>actively open to opportunities</strong> right now! 🟢<br><br>He's especially interested in:<br>💻 Frontend Development roles<br>📊 Business Intelligence & Data Analysis<br>🏢 ERP Implementation & Consulting<br>🎨 UI/UX Design roles<br><br>📧 Email: <strong>m.umer.faheem@gmail.com</strong><br>💬 WhatsApp: <a href="https://wa.me/923258148564" target="_blank" style="color:var(--green-dk);font-weight:700">032-581-48564</a><br><br>He responds quickly and professionally! 🚀`
+  }
+};
+
+const GREET_REPLIES = [
+  `Hello! 👋 Great to meet you! I'm Umer's personal AI assistant.<br><br>I know <em>everything</em> about his portfolio, skills, experience, and journey. What would you like to know?<br><br>Try: <strong>skills</strong>, <strong>projects</strong>, <strong>experience</strong>, or <strong>contact</strong>!`,
+  `Hey there! 👋 Welcome! I'm Umer's portfolio assistant, here to help you explore his work and background.<br><br>Ask me anything — I'm powered by Umer's complete profile! 🚀`
+];
+const THANKS_REPLIES = [
+  `You're very welcome! 😊 Happy to help you learn more about Umer. Is there anything else you'd like to know?`,
+  `Glad I could help! 🙌 Feel free to ask anything else about Umer's skills, experience, or how to get in touch.`
+];
+const FALLBACKS = [
+  `That's an interesting question! I'm specifically trained on Umer's portfolio.<br><br>Try asking about his <strong>skills</strong>, <strong>projects</strong>, <strong>experience</strong>, <strong>certifications</strong>, or <strong>how to contact him</strong>. 😊`,
+  `I know Umer's portfolio inside out, but that's outside my scope!<br><br>How about I tell you about his <strong>award-winning ERP project</strong>, his <strong>tech stack</strong>, or how to <strong>download his CV</strong>? 📄`,
+  `Great question — but I'm focused on portfolio topics!<br><br>Ask me about Umer's <strong>experience</strong>, <strong>skills</strong>, <strong>certifications</strong>, or his journey to becoming a <strong>Frontend & BI developer</strong>. 🚀`
+];
+
+function getBotResponse(input){
+  const q = input.toLowerCase().trim();
+  // Knowledge base
+  for(const [,cat] of Object.entries(KB)){
+    if(cat.k.some(k => q.includes(k))) return cat.r;
+  }
+  // Greetings
+  if(/^(hi|hello|hey|yo|sup|salaam|assalam|greet|howdy|hiya|hai)/.test(q))
+    return GREET_REPLIES[Math.floor(Math.random()*GREET_REPLIES.length)];
+  // Thanks
+  if(/thank|thanks|appreciated|great|awesome|nice|perfect|wonderful|helpful/.test(q))
+    return THANKS_REPLIES[Math.floor(Math.random()*THANKS_REPLIES.length)];
+  // Hire intent
+  if(/hire|job|opportunity|position|opening|role|recruit|looking for/.test(q))
+    return `Umer is <strong>actively open to exciting opportunities!</strong><br><br>Interested in roles involving:<br>🖥️ Frontend Development<br>📊 Business Intelligence & Data Analysis<br>🏢 ERP Implementation & Consulting<br><br>📧 <strong>m.umer.faheem@gmail.com</strong><br>💼 <a href="https://linkedin.com/in/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">LinkedIn</a> — responds quickly and professionally! 🚀`;
+  return FALLBACKS[Math.floor(Math.random()*FALLBACKS.length)];
+}
+
+async function sendChatMsg(){
+  const input = document.getElementById('chatInput');
+  if(!input) return;
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+
+  addMessage(text, 'user');
+  chatHistory.push({role:'user', text});
+
+  showTyping();
+  const delay = 700 + Math.random()*800;
+  setTimeout(()=>{
+    hideTyping();
+    const response = getBotResponse(text);
+    addMessage(response, 'bot');
+    chatHistory.push({role:'bot', text:response});
+    // Add suggested follow-ups
+    addSuggestions(text);
+  }, delay);
+}
+
+function addSuggestions(lastQ){
+  const msgs = document.getElementById('chatMessages');
+  if(!msgs) return;
+  const q = lastQ.toLowerCase();
+  let suggestions = [];
+  if(q.includes('skill') || q.includes('tech')) suggestions = ["Tell me about projects","What certifications does he have?","How to contact him?"];
+  else if(q.includes('project') || q.includes('erp')) suggestions = ["What skills does he use?","Tell me about his experience","Download his CV"];
+  else if(q.includes('contact') || q.includes('hire')) suggestions = ["What are his skills?","See his projects","Download CV"];
+  else if(q.includes('cert')) suggestions = ["What projects did he build?","What's his experience?","Who is Umer?"];
+  else suggestions = ["What are his skills?","Tell me about projects","How to contact him?"];
+
+  if(!suggestions.length) return;
+  const chipRow = document.createElement('div');
+  chipRow.className = 'chat-suggest-row';
+  suggestions.forEach(s=>{
+    const btn = document.createElement('button');
+    btn.className = 'chat-suggest-chip';
+    btn.textContent = s;
+    btn.onclick = ()=>{ chipRow.remove(); chipAsk(s); };
+    chipRow.appendChild(btn);
+  });
+  msgs.appendChild(chipRow);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+/* ── Auto-resize textarea + Enter to send ── */
+document.addEventListener('DOMContentLoaded', function(){
+  const chatInp = document.getElementById('chatInput');
+  if(chatInp){
+    chatInp.addEventListener('input', function(){
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+    });
+    chatInp.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        sendChatMsg();
+      }
+    });
+  }
+
+  // Close on overlay click
+  const overlay = document.getElementById('aiChatOverlay');
+  if(overlay){
+    overlay.addEventListener('click', function(e){
+      if(e.target === this) toggleAIChat();
+    });
+    // init hidden
+    overlay.style.display = 'none';
+  }
+
+  // Keyboard: Escape to close
+  document.addEventListener('keydown', e=>{
+    if(e.key === 'Escape' && chatOpen) toggleAIChat();
+  });
+
+  // Show unread badge after 4s
+  setTimeout(()=>{
+    if(!chatOpen){ unreadCount = 1; updateUnreadBadge(); }
+  }, 4500);
+});
 </script>
 </body>
 </html>
