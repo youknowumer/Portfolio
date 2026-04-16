@@ -175,124 +175,217 @@ body:has(a:hover) #cur-r,body:has(button:hover) #cur-r{width:56px;height:56px;bo
 @keyframes lB{0%{width:0%}100%{width:100%}}
 @keyframes fU{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
-/* ══════════════════════════════  HEADER — iOS 26 Liquid Glass Tab Bar */
+/* ══════════════════════════════  HEADER — iOS 26 Ultra Liquid Glass Tab Bar */
 header{
   position:fixed;top:0;left:0;width:100%;z-index:1000;
-  padding:.75rem 0;
+  padding:.65rem 0;
   background:transparent;
   pointer-events:none;
   transition:padding .4s cubic-bezier(.4,0,.2,1);
 }
-header.scrolled{padding:.5rem 0;}
+header.scrolled{padding:.4rem 0;}
+
+/* Full-width frosted glass backdrop behind nav */
+header::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(220,242,233,0.55) 0%,transparent 100%);
+  pointer-events:none;z-index:-1;
+}
+
 nav{
   display:flex;justify-content:space-between;align-items:center;
-  max-width:1220px;margin:0 auto;
-  padding:.48rem .55rem .48rem 1.4rem;
-  width:calc(100% - 4rem);
+  max-width:1240px;margin:0 auto;
+  padding:.42rem .42rem .42rem 1.3rem;
+  width:calc(100% - 3.5rem);
   pointer-events:all;
-  background:rgba(230,244,238,0.68);
-  backdrop-filter:blur(60px) saturate(300%) brightness(1.08) contrast(1.02);
-  -webkit-backdrop-filter:blur(60px) saturate(300%) brightness(1.08);
-  border-radius:32px;
-  border:1px solid rgba(255,255,255,0.95);
-  border-bottom:1px solid rgba(255,255,255,0.55);
+  /* iOS 26 Liquid Glass: layered glass + specular highlights */
+  background:
+    linear-gradient(145deg,rgba(255,255,255,0.82) 0%,rgba(230,248,240,0.72) 50%,rgba(255,255,255,0.76) 100%);
+  backdrop-filter:blur(72px) saturate(380%) brightness(1.12) contrast(1.04);
+  -webkit-backdrop-filter:blur(72px) saturate(380%) brightness(1.12) contrast(1.04);
+  border-radius:36px;
+  border:1px solid rgba(255,255,255,0.98);
+  border-bottom:1px solid rgba(255,255,255,0.5);
   box-shadow:
-    inset 0 3px 0 rgba(255,255,255,1),
-    inset 0 -1px 0 rgba(16,185,129,0.06),
-    inset 1.5px 0 0 rgba(255,255,255,0.9),
-    inset -1.5px 0 0 rgba(255,255,255,0.9),
-    0 12px 48px rgba(16,185,129,0.14),
-    0 4px 12px rgba(0,0,0,0.07),
+    /* Top specular highlight */
+    inset 0 2.5px 0 rgba(255,255,255,1),
+    /* Bottom ambient shadow */
+    inset 0 -1px 0 rgba(16,185,129,0.05),
+    /* Side highlights for 3D glass edge */
+    inset 2px 0 0 rgba(255,255,255,0.85),
+    inset -2px 0 0 rgba(255,255,255,0.85),
+    /* Outer glow */
+    0 0 0 1px rgba(255,255,255,0.6),
+    0 8px 40px rgba(16,185,129,0.13),
+    0 2px 8px rgba(0,0,0,0.06),
     0 0 0 0.5px rgba(16,185,129,0.14),
     0 1px 0 rgba(255,255,255,0.6);
   transition:all .4s cubic-bezier(.4,0,.2,1);
   position:relative;
 }
-/* Subtle rainbow specular on top edge */
+/* iOS 26 specular arc — rainbow edge glow */
 nav::before{
-  content:'';position:absolute;top:0;left:8%;right:8%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(16,185,129,0.5),rgba(110,231,183,0.7),rgba(16,185,129,0.5),transparent);
+  content:'';position:absolute;top:0;left:4%;right:4%;height:1.5px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(52,211,153,0.3) 15%,
+    rgba(255,255,255,1) 35%,
+    rgba(110,231,183,0.9) 50%,
+    rgba(255,255,255,1) 65%,
+    rgba(16,185,129,0.3) 85%,
+    transparent 100%);
   border-radius:999px;pointer-events:none;
 }
+/* Bottom ambient glow line */
+nav::after{
+  content:'';position:absolute;bottom:-1px;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(16,185,129,0.2),transparent);
+  pointer-events:none;
+}
 header.scrolled nav{
-  background:rgba(230,244,238,0.85);
-  border-radius:26px;
+  background:linear-gradient(145deg,rgba(255,255,255,0.88) 0%,rgba(225,245,238,0.82) 100%);
+  border-radius:30px;
   box-shadow:
-    inset 0 2.5px 0 rgba(255,255,255,1),
-    0 16px 56px rgba(16,185,129,0.18),
-    0 4px 12px rgba(0,0,0,0.08),
-    0 0 0 0.5px rgba(16,185,129,0.12);
+    inset 0 2px 0 rgba(255,255,255,1),
+    0 20px 60px rgba(16,185,129,0.2),
+    0 4px 14px rgba(0,0,0,0.08),
+    0 0 0 0.8px rgba(255,255,255,0.9);
 }
 .logo{
   font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dk);
-  font-weight:700;display:flex;align-items:center;gap:.6rem;flex-shrink:0;
-  letter-spacing:-.3px;
+  font-weight:700;display:flex;align-items:center;gap:.65rem;flex-shrink:0;
+  letter-spacing:-.3px;position:relative;
+}
+/* Logo glass pill */
+.logo-inner{
+  display:flex;align-items:center;gap:.65rem;
+  padding:.28rem .9rem .28rem .5rem;
+  border-radius:20px;
+  background:rgba(255,255,255,0.55);
+  border:1px solid rgba(255,255,255,0.9);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.95),0 2px 10px rgba(16,185,129,0.1);
+  backdrop-filter:blur(16px);
 }
 .logo-dot{
-  width:9px;height:9px;
-  background:conic-gradient(from 0deg,#10b981,#34d399,#6ee7b7,#10b981);
+  width:10px;height:10px;
+  background:conic-gradient(from 0deg,#10b981,#34d399,#6ee7b7,#f59e0b,#10b981);
   border-radius:50%;
-  box-shadow:0 0 14px rgba(16,185,129,0.8),0 0 28px rgba(16,185,129,0.3);
-  animation:pulse 2.5s ease-in-out infinite;
+  box-shadow:0 0 12px rgba(16,185,129,0.9),0 0 24px rgba(16,185,129,0.4),0 0 4px rgba(255,255,255,0.8);
+  animation:pulse 2.2s ease-in-out infinite;
+  flex-shrink:0;
 }
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.75}}
-/* NAV LINKS GROUP */
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 12px rgba(16,185,129,0.9)}50%{transform:scale(1.6);opacity:.8;box-shadow:0 0 20px rgba(16,185,129,1),0 0 40px rgba(52,211,153,0.4)}}
+
+/* ── iOS 26 NAV LINKS: floating glass pill container ── */
 nav ul{
-  list-style:none;display:flex;gap:.06rem;align-items:center;
-  background:rgba(255,255,255,0.38);
-  border-radius:24px;
-  padding:.2rem .28rem;
-  border:1px solid rgba(255,255,255,0.8);
+  list-style:none;display:flex;gap:.04rem;align-items:center;
+  /* Frosted glass inner pill tray */
+  background:
+    linear-gradient(145deg,rgba(255,255,255,0.55) 0%,rgba(228,244,236,0.42) 100%);
+  backdrop-filter:blur(40px) saturate(280%);
+  -webkit-backdrop-filter:blur(40px) saturate(280%);
+  border-radius:26px;
+  padding:.22rem .26rem;
+  border:1px solid rgba(255,255,255,0.88);
+  border-bottom:1px solid rgba(255,255,255,0.45);
   box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,0.9),
-    inset 0 -1px 0 rgba(16,185,129,0.06),
-    0 2px 8px rgba(16,185,129,0.06);
-  backdrop-filter:blur(20px);
+    inset 0 1.5px 0 rgba(255,255,255,0.95),
+    inset 0 -0.5px 0 rgba(16,185,129,0.06),
+    0 3px 12px rgba(16,185,129,0.08),
+    0 1px 3px rgba(0,0,0,0.04);
+  position:relative;
+}
+/* Gloss arc inside the pill tray */
+nav ul::before{
+  content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.9),transparent);
+  border-radius:999px;pointer-events:none;
 }
 .nav-link{
-  color:var(--text2);font-weight:600;font-size:.78rem;
-  letter-spacing:.1px;transition:all .2s cubic-bezier(.34,1.3,.64,1);
-  padding:.32rem .78rem;border-radius:20px;position:relative;
-  white-space:nowrap;
+  color:var(--text2);font-weight:600;font-size:.77rem;
+  letter-spacing:.1px;transition:all .22s cubic-bezier(.34,1.3,.64,1);
+  padding:.34rem .8rem;border-radius:20px;position:relative;
+  white-space:nowrap;display:flex;align-items:center;gap:.35rem;
 }
+.nav-link i{ font-size:.7rem; opacity:.7; }
 .nav-link:hover{
   color:var(--green-dk);
-  background:rgba(255,255,255,0.85);
-  box-shadow:0 2px 10px rgba(16,185,129,0.16),inset 0 1px 0 rgba(255,255,255,0.95);
-  transform:translateY(-1px);
+  background:rgba(255,255,255,0.9);
+  box-shadow:
+    0 2px 12px rgba(16,185,129,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.98),
+    inset 0 -0.5px 0 rgba(16,185,129,0.08);
+  transform:translateY(-1.5px);
 }
 .nav-link.nav-active{
   color:white;
   background:linear-gradient(145deg,#10b981,#059669);
-  box-shadow:0 4px 18px rgba(16,185,129,0.45),inset 0 1px 0 rgba(255,255,255,0.3);
+  box-shadow:
+    0 4px 20px rgba(16,185,129,0.5),
+    0 2px 6px rgba(16,185,129,0.3),
+    inset 0 1.5px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(5,150,105,0.3);
+}
+/* Active pill specular */
+.nav-link.nav-active::before{
+  content:'';position:absolute;top:0;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.7),transparent);
+  border-radius:999px;
 }
 /* RIGHT-SIDE NAV ACTIONS */
 .nav-actions{
-  display:flex;align-items:center;gap:.5rem;flex-shrink:0;
+  display:flex;align-items:center;gap:.45rem;flex-shrink:0;
+}
+/* Docs button in nav */
+.nav-docs-btn{
+  padding:.4rem 1rem;border-radius:20px;
+  background:rgba(255,255,255,0.62);
+  border:1px solid rgba(255,255,255,0.9);
+  color:var(--text2);font-weight:700;font-size:.76rem;
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.95),0 2px 8px rgba(16,185,129,0.09);
+  transition:all .25s cubic-bezier(.34,1.3,.64,1);cursor:pointer;
+  display:flex;align-items:center;gap:.4rem;white-space:nowrap;
+  backdrop-filter:blur(20px);letter-spacing:.05px;
+}
+.nav-docs-btn:hover{
+  background:rgba(255,255,255,0.92);transform:translateY(-2px);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,1),0 6px 20px rgba(16,185,129,0.2);
+  color:var(--green-dk);
 }
 .nav-cta{
-  padding:.46rem 1.3rem;border-radius:22px;
-  background:linear-gradient(145deg,#10b981,#059669);
-  color:white;font-weight:700;font-size:.8rem;
-  box-shadow:0 4px 18px rgba(16,185,129,0.48),inset 0 1.5px 0 rgba(255,255,255,0.28);
+  padding:.44rem 1.2rem;border-radius:22px;
+  background:linear-gradient(145deg,#10b981 0%,#059669 100%);
+  color:white;font-weight:700;font-size:.78rem;
+  box-shadow:0 4px 18px rgba(16,185,129,0.5),inset 0 1.5px 0 rgba(255,255,255,0.3);
   transition:all .28s cubic-bezier(.34,1.3,.64,1);border:none;
-  letter-spacing:.25px;white-space:nowrap;
+  letter-spacing:.2px;white-space:nowrap;position:relative;overflow:hidden;
 }
-.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 32px rgba(16,185,129,0.55)}
-/* AI CHAT BUTTON IN NAV */
+.nav-cta::after{
+  content:'';position:absolute;top:0;left:-100%;width:200%;height:100%;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.2) 50%,transparent 60%);
+  transition:left .5s ease;
+}
+.nav-cta:hover::after{left:100%}
+.nav-cta:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 32px rgba(16,185,129,0.6),inset 0 1.5px 0 rgba(255,255,255,0.35)}
+/* AI CHAT BUTTON IN NAV — glass orb style */
 .nav-ai-btn{
   width:38px;height:38px;border-radius:14px;
-  background:rgba(255,255,255,0.72);
-  border:1px solid rgba(255,255,255,0.92);
+  background:
+    radial-gradient(ellipse at 30% 25%,rgba(255,255,255,0.95) 0%,rgba(255,255,255,0.62) 60%,rgba(220,242,233,0.4) 100%);
+  border:1px solid rgba(255,255,255,0.95);
   color:var(--green-dk);font-size:.95rem;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   transition:all .25s cubic-bezier(.34,1.3,.64,1);flex-shrink:0;
-  box-shadow:0 3px 10px rgba(16,185,129,0.14),inset 0 1.5px 0 rgba(255,255,255,1);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,1),
+    inset 0 -1px 0 rgba(16,185,129,0.08),
+    0 3px 12px rgba(16,185,129,0.16),
+    0 1px 3px rgba(0,0,0,0.05);
   position:relative;
-  backdrop-filter:blur(20px);
+  backdrop-filter:blur(24px);
 }
 .nav-ai-btn:hover{
-  background:rgba(255,255,255,0.92);
+  background:rgba(255,255,255,0.95);
   transform:translateY(-2px) scale(1.06);
   box-shadow:0 8px 24px rgba(16,185,129,0.28),inset 0 1.5px 0 rgba(255,255,255,1);
   color:var(--green);
@@ -1047,7 +1140,7 @@ footer p span{color:var(--green3)}
 .download-section .sec-head{margin-bottom:2rem}
 .dl-outer{
   display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;
-  max-width:900px;margin:0 auto;
+  max-width:980px;margin:0 auto;
 }
 .dl-card{
   display:flex;align-items:center;gap:1.4rem;
@@ -1061,6 +1154,8 @@ footer p span{color:var(--green3)}
   text-decoration:none;
   position:relative;overflow:hidden;
   transition:all .35s cubic-bezier(.34,1.3,.64,1);
+  flex-direction:column;align-items:flex-start;
+  cursor:default;
 }
 .dl-card::before{
   content:'';position:absolute;inset:0;
@@ -1068,15 +1163,16 @@ footer p span{color:var(--green3)}
   opacity:0;transition:opacity .3s;
 }
 .dl-card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-4px);
   box-shadow:var(--sh-xl),inset 0 1.5px 0 rgba(255,255,255,0.95);
   border-color:rgba(16,185,129,0.25);
 }
 .dl-card:hover::before{opacity:1}
+.dl-card-top{display:flex;align-items:center;gap:1.2rem;width:100%;margin-bottom:1.2rem}
 .dl-card-icon{
-  width:58px;height:58px;border-radius:var(--r-md);
+  width:52px;height:52px;border-radius:var(--r-md);
   display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;color:white;flex-shrink:0;
+  font-size:1.4rem;color:white;flex-shrink:0;
 }
 .dl-card-cv .dl-card-icon{background:var(--grad);box-shadow:0 6px 18px rgba(16,185,129,0.38)}
 .dl-card-cl .dl-card-icon{background:linear-gradient(135deg,#f59e0b,#10b981);box-shadow:0 6px 18px rgba(245,158,11,0.32)}
@@ -1085,26 +1181,143 @@ footer p span{color:var(--green3)}
   font-size:.7rem;font-weight:700;color:var(--muted);
   text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.25rem;
 }
-.dl-card-title{font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:.15rem}
-.dl-card-desc{font-size:.82rem;color:var(--muted);font-weight:600}
-.dl-card-arrow{
-  width:36px;height:36px;border-radius:var(--r-sm);
-  background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);
+.dl-card-title{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:.12rem}
+.dl-card-desc{font-size:.78rem;color:var(--muted);font-weight:600}
+/* PDF preview thumbnail strip */
+.dl-preview-strip{
+  width:100%;border-radius:var(--r-sm);overflow:hidden;
+  background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.1);
   display:flex;align-items:center;justify-content:center;
-  color:var(--green);font-size:.9rem;flex-shrink:0;
-  transition:all .3s cubic-bezier(.34,1.4,.64,1);
+  height:120px;margin-bottom:1rem;position:relative;cursor:pointer;
+  transition:all .3s ease;
 }
-.dl-card:hover .dl-card-arrow{
-  background:var(--grad);border-color:transparent;color:white;
-  transform:translateY(3px);
-  box-shadow:0 4px 12px rgba(16,185,129,0.35);
+.dl-preview-strip:hover{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.08)}
+.dl-preview-strip .preview-eye{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(16,185,129,0.0);transition:background .3s;border-radius:var(--r-sm);
+  flex-direction:column;gap:.4rem;
 }
+.dl-preview-strip:hover .preview-eye{background:rgba(16,185,129,0.12)}
+.dl-preview-strip .preview-eye i{font-size:1.5rem;color:var(--green);opacity:.7;transition:opacity .3s}
+.dl-preview-strip:hover .preview-eye i{opacity:1}
+.dl-preview-strip .preview-eye span{font-size:.72rem;font-weight:700;color:var(--green-dk);opacity:0;transition:opacity .3s;letter-spacing:.5px;text-transform:uppercase}
+.dl-preview-strip:hover .preview-eye span{opacity:1}
+.dl-preview-mini-text{
+  padding:.9rem 1rem;font-size:.68rem;line-height:1.7;color:var(--text2);
+  font-family:'Sora',sans-serif;width:100%;
+}
+.dl-preview-mini-text .mini-name{font-size:.85rem;font-weight:800;color:var(--green-dk);margin-bottom:.3rem}
+.dl-preview-mini-text .mini-role{font-size:.7rem;font-weight:700;color:var(--muted);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:1px}
+.dl-preview-mini-text .mini-line{height:5px;border-radius:4px;background:linear-gradient(90deg,rgba(16,185,129,0.2),rgba(16,185,129,0.05));margin-bottom:.35rem}
+.dl-preview-mini-text .mini-line:nth-child(4){width:75%}
+.dl-preview-mini-text .mini-line:nth-child(5){width:60%}
+/* Action buttons row */
+.dl-actions{display:flex;gap:.7rem;width:100%}
+.dl-btn{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.6rem 1rem;border-radius:var(--r-full);
+  font-size:.78rem;font-weight:700;cursor:pointer;border:none;
+  transition:all .25s cubic-bezier(.34,1.3,.64,1);font-family:'Sora',sans-serif;
+  text-decoration:none;
+}
+.dl-btn-view{
+  background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.22);
+  color:var(--green-dk);
+}
+.dl-btn-view:hover{background:rgba(16,185,129,0.18);transform:translateY(-2px)}
+.dl-btn-dl{
+  background:var(--grad);color:white;
+  box-shadow:0 4px 14px rgba(16,185,129,0.35);
+}
+.dl-btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(16,185,129,0.45)}
 .dl-note{
   text-align:center;margin-top:1.5rem;
   font-size:.8rem;color:var(--muted);font-weight:600;
   display:flex;align-items:center;justify-content:center;gap:.5rem;
 }
 .dl-note i{color:var(--green)}
+
+/* ── PDF Viewer Modal ── */
+#pdfViewerOverlay{
+  display:none;position:fixed;inset:0;z-index:9500;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(10px);
+  align-items:center;justify-content:center;
+  padding:1.5rem;
+}
+#pdfViewerOverlay.open{display:flex}
+#pdfViewerModal{
+  width:min(860px,100%);height:min(90vh,820px);
+  background:rgba(240,250,245,0.96);
+  backdrop-filter:blur(40px) saturate(200%);
+  border-radius:var(--r-xl);
+  border:1px solid rgba(255,255,255,0.9);
+  box-shadow:0 40px 100px rgba(0,0,0,0.35),0 0 0 1px rgba(16,185,129,0.15),inset 0 2px 0 rgba(255,255,255,1);
+  display:flex;flex-direction:column;overflow:hidden;
+  animation:chatPop .35s cubic-bezier(.34,1.4,.64,1) both;
+}
+.pdf-modal-header{
+  display:flex;align-items:center;gap:1rem;
+  padding:1rem 1.4rem;
+  border-bottom:1px solid rgba(16,185,129,0.12);
+  background:rgba(255,255,255,0.6);flex-shrink:0;
+}
+.pdf-modal-icon{
+  width:38px;height:38px;border-radius:12px;
+  background:var(--grad);display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1rem;flex-shrink:0;
+  box-shadow:0 4px 14px rgba(16,185,129,0.38);
+}
+.pdf-modal-title{flex:1;font-size:.95rem;font-weight:800;color:var(--text)}
+.pdf-modal-sub{font-size:.72rem;color:var(--muted);font-weight:600;margin-top:.1rem}
+.pdf-modal-actions{display:flex;gap:.5rem;align-items:center}
+.pdf-modal-dl-btn{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.5rem 1.1rem;border-radius:var(--r-full);
+  background:var(--grad);color:white;font-size:.78rem;font-weight:700;
+  border:none;cursor:pointer;text-decoration:none;
+  box-shadow:0 4px 14px rgba(16,185,129,0.38);
+  transition:all .25s ease;font-family:'Sora',sans-serif;
+}
+.pdf-modal-dl-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(16,185,129,0.48)}
+.pdf-close-btn{
+  width:32px;height:32px;border-radius:50%;
+  background:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.9);
+  color:var(--muted);font-size:.82rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;box-shadow:inset 0 1px 0 rgba(255,255,255,1);
+  flex-shrink:0;
+}
+.pdf-close-btn:hover{background:rgba(255,255,255,1);color:var(--text);transform:scale(1.08)}
+.pdf-viewer-body{flex:1;overflow:hidden;position:relative;background:#f0f4f2}
+.pdf-viewer-body iframe,.pdf-viewer-body embed{
+  width:100%;height:100%;border:none;display:block;
+}
+.pdf-viewer-fallback{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:1rem;padding:2rem;text-align:center;
+}
+.pdf-viewer-fallback i{font-size:3rem;color:var(--green);opacity:.5}
+.pdf-viewer-fallback p{color:var(--muted);font-size:.9rem;font-weight:600;max-width:380px;line-height:1.7}
+/* Cover letter viewer (text-based) */
+.cl-preview-content{
+  padding:2.5rem 3rem;height:100%;overflow-y:auto;
+  font-family:'Sora',sans-serif;line-height:1.85;color:var(--text);
+  background:white;
+  scrollbar-width:thin;scrollbar-color:rgba(16,185,129,0.2) transparent;
+}
+.cl-preview-content::-webkit-scrollbar{width:5px}
+.cl-preview-content::-webkit-scrollbar-thumb{background:rgba(16,185,129,0.25);border-radius:4px}
+.cl-preview-content h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--green-dk);margin-bottom:.2rem}
+.cl-preview-content .cl-contact{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+.cl-preview-content .cl-date{color:var(--muted);font-size:.88rem;margin-bottom:1.2rem}
+.cl-preview-content .cl-subject{font-weight:700;color:var(--text);margin-bottom:1.2rem;font-size:.92rem}
+.cl-preview-content p{font-size:.9rem;margin-bottom:1rem;color:var(--text2)}
+.cl-preview-content .cl-sig{margin-top:1.5rem;font-weight:700;color:var(--green-dk)}
+@media(max-width:640px){
+  #pdfViewerModal{border-radius:var(--r-lg);height:88vh}
+  .cl-preview-content{padding:1.5rem}
+}
+@media(max-width:768px){.dl-outer{grid-template-columns:1fr}}
 
 /* ══════════════════════════════  CONTACT — tighter */
 .contact-section{
@@ -1632,19 +1845,23 @@ footer{
 <header id="header">
   <nav>
     <div class="logo">
-      <div class="logo-dot"></div>
-      Umer Faheem
+      <div class="logo-inner">
+        <div class="logo-dot"></div>
+        Umer Faheem
+      </div>
     </div>
     <ul id="navLinks">
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#education" class="nav-link">Education</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#certifications" class="nav-link">Certs</a></li>
-      <li><a href="#awards" class="nav-link">Awards</a></li>
+      <li><a href="#about" class="nav-link"><i class="fas fa-user"></i>About</a></li>
+      <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i>Skills</a></li>
+      <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i>Exp</a></li>
+      <li><a href="#projects" class="nav-link"><i class="fas fa-rocket"></i>Projects</a></li>
+      <li><a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i>Certs</a></li>
+      <li><a href="#docs" class="nav-link"><i class="fas fa-file-alt"></i>Docs</a></li>
     </ul>
     <div class="nav-actions">
+      <button class="nav-docs-btn" onclick="document.getElementById('docs').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-download"></i> Resume
+      </button>
       <button class="nav-ai-btn" id="aiChatBtn" title="Ask Umer's AI Assistant" onclick="toggleAIChat()">
         <i class="fas fa-wand-magic-sparkles" style="font-size:.85rem"></i>
         <div class="ai-ping"></div>
@@ -1885,34 +2102,96 @@ footer{
   <div class="container">
     <div class="sec-head reveal">
       <div class="sec-tag"><i class="fas fa-file-download"></i> Documents</div>
-      <h2 class="sec-title">Download My Documents</h2>
-      <p class="sec-sub">Access my full CV and tailored Cover Letter — each crafted with care to reflect my skills, experience, and professional journey.</p>
+      <h2 class="sec-title">My Documents</h2>
+      <p class="sec-sub">Preview my CV and Cover Letter right here — then download with one click. Ready for recruiters and hiring managers.</p>
     </div>
     <div class="dl-outer">
-      <a href="Muhammad_Umer_Faheem_-_CV.pdf" download class="dl-card dl-card-cv reveal-left">
-        <div class="dl-card-icon"><i class="fas fa-file-alt"></i></div>
-        <div class="dl-card-body">
-          <div class="dl-card-type">Curriculum Vitae</div>
-          <div class="dl-card-title">Muhammad Umer Faheem</div>
-          <div class="dl-card-desc">Full Resume · PDF Format · Updated 2026</div>
+      <!-- CV Card -->
+      <div class="dl-card dl-card-cv reveal-left">
+        <div class="dl-card-top">
+          <div class="dl-card-icon"><i class="fas fa-file-alt"></i></div>
+          <div class="dl-card-body">
+            <div class="dl-card-type">Curriculum Vitae</div>
+            <div class="dl-card-title">Muhammad Umer Faheem</div>
+            <div class="dl-card-desc">Full Resume · PDF · Updated 2026</div>
+          </div>
         </div>
-        <div class="dl-card-arrow"><i class="fas fa-arrow-down"></i></div>
-      </a>
-      <a href="Muhammad_Umer_Faheem_Cover_Letter.docx" download class="dl-card dl-card-cl reveal-right">
-        <div class="dl-card-icon"><i class="fas fa-envelope-open-text"></i></div>
-        <div class="dl-card-body">
-          <div class="dl-card-type">Cover Letter</div>
-          <div class="dl-card-title">Tailored Application Letter</div>
-          <div class="dl-card-desc">Professional Letter · DOCX Format · 2026</div>
+        <!-- Preview strip -->
+        <div class="dl-preview-strip" onclick="openDocViewer('cv')" title="Click to preview">
+          <div class="dl-preview-mini-text">
+            <div class="mini-name">MUHAMMAD UMER FAHEEM</div>
+            <div class="mini-role">Frontend Developer · Data &amp; BI Enthusiast</div>
+            <div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div>
+            <div class="mini-line"></div><div class="mini-line"></div>
+          </div>
+          <div class="preview-eye">
+            <i class="fas fa-eye"></i>
+            <span>Preview</span>
+          </div>
         </div>
-        <div class="dl-card-arrow"><i class="fas fa-arrow-down"></i></div>
-      </a>
+        <div class="dl-actions">
+          <button class="dl-btn dl-btn-view" onclick="openDocViewer('cv')"><i class="fas fa-eye"></i> View</button>
+          <a href="Muhammad_Umer_Faheem_-_CV.pdf" download class="dl-btn dl-btn-dl"><i class="fas fa-download"></i> Download CV</a>
+        </div>
+      </div>
+      <!-- Cover Letter Card -->
+      <div class="dl-card dl-card-cl reveal-right">
+        <div class="dl-card-top">
+          <div class="dl-card-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <div class="dl-card-body">
+            <div class="dl-card-type">Cover Letter</div>
+            <div class="dl-card-title">Tailored Application Letter</div>
+            <div class="dl-card-desc">Professional Letter · PDF · 2026</div>
+          </div>
+        </div>
+        <!-- Preview strip -->
+        <div class="dl-preview-strip" onclick="openDocViewer('cl')" title="Click to preview">
+          <div class="dl-preview-mini-text">
+            <div class="mini-name">Dear Hiring Manager,</div>
+            <div class="mini-role">Application for Internship / Entry-Level Role</div>
+            <div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div>
+            <div class="mini-line"></div><div class="mini-line"></div>
+          </div>
+          <div class="preview-eye">
+            <i class="fas fa-eye"></i>
+            <span>Preview</span>
+          </div>
+        </div>
+        <div class="dl-actions">
+          <button class="dl-btn dl-btn-view" onclick="openDocViewer('cl')"><i class="fas fa-eye"></i> View</button>
+          <a href="Muhammad_Umer_Faheem_Cover_Letter.pdf" download class="dl-btn dl-btn-dl"><i class="fas fa-download"></i> Download</a>
+        </div>
+      </div>
     </div>
     <div class="dl-note reveal">
       <i class="fas fa-shield-alt"></i> Documents are up to date and ready to share with recruiters or hiring managers
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════
+     PDF VIEWER MODAL
+═══════════════════════════════ -->
+<div id="pdfViewerOverlay" onclick="if(event.target===this)closeDocViewer()">
+  <div id="pdfViewerModal">
+    <div class="pdf-modal-header">
+      <div class="pdf-modal-icon" id="pdfModalIcon"><i class="fas fa-file-alt"></i></div>
+      <div style="flex:1;min-width:0">
+        <div class="pdf-modal-title" id="pdfModalTitle">CV — Muhammad Umer Faheem</div>
+        <div class="pdf-modal-sub" id="pdfModalSub">Full Resume · PDF · 2026</div>
+      </div>
+      <div class="pdf-modal-actions">
+        <a id="pdfModalDlBtn" href="Muhammad_Umer_Faheem_-_CV.pdf" download class="pdf-modal-dl-btn">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <button class="pdf-close-btn" onclick="closeDocViewer()"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <div class="pdf-viewer-body" id="pdfViewerBody">
+      <!-- injected dynamically -->
+    </div>
+  </div>
+</div>
 
 <div class="ani-divider"></div>
 <section class="skills-section" id="skills">
@@ -2777,7 +3056,317 @@ footer{
 
 <div class="ani-divider"></div>
 
-<!-- ══════════ CONTACT ══════════ -->
+<!-- ══════════ DOCUMENTS (Resume + Cover Letter) ══════════ -->
+<section id="docs" style="padding:5rem 0">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag"><i class="fas fa-file-alt"></i> Documents</div>
+      <h2 class="sec-title">Resume & Cover Letter</h2>
+      <p class="sec-sub">Preview and download my latest professional documents — updated 2026.</p>
+    </div>
+
+    <!-- Document Tabs -->
+    <div class="docs-tabs-wrap reveal">
+      <button class="docs-tab active" onclick="switchDoc('cv')"><i class="fas fa-id-card"></i> Resume / CV</button>
+      <button class="docs-tab" onclick="switchDoc('cl')"><i class="fas fa-envelope-open-text"></i> Cover Letter</button>
+    </div>
+
+    <!-- CV Panel -->
+    <div id="docPanel-cv" class="doc-panel active reveal">
+      <div class="doc-preview-card glass-card">
+        <div class="doc-preview-header">
+          <div class="doc-meta">
+            <div class="doc-icon-lg"><i class="fas fa-file-pdf"></i></div>
+            <div>
+              <div class="doc-title">Muhammad Umer Faheem — CV</div>
+              <div class="doc-subtitle">Frontend Developer · Data & BI Enthusiast · BBIS Final Year</div>
+              <div class="doc-tags-row">
+                <span class="doc-tag"><i class="fas fa-calendar"></i> Updated 2026</span>
+                <span class="doc-tag"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan</span>
+                <span class="doc-tag"><i class="fas fa-graduation-cap"></i> UMT — BBIS Semester 8</span>
+              </div>
+            </div>
+          </div>
+          <div class="doc-action-btns">
+            <button class="doc-preview-btn" onclick="openDocPreview('cv')"><i class="fas fa-eye"></i> Preview</button>
+            <a href="Muhammad_Umer_Faheem_-_CV.pdf" download class="doc-dl-btn"><i class="fas fa-download"></i> Download PDF</a>
+          </div>
+        </div>
+
+        <!-- CV Content Preview Card -->
+        <div class="doc-snapshot">
+          <div class="doc-snap-left">
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-user"></i> Professional Summary</div>
+              <p class="snap-text">Ambitious BBIS student with hands-on experience in IT support, database systems, frontend development, and business process analysis. Proficient in SQL, Power BI, Odoo ERP, and modern web technologies. Known for a detail-oriented approach and collaborative mindset.</p>
+            </div>
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-briefcase"></i> Experience</div>
+              <div class="snap-exp-item">
+                <div class="snap-exp-role">Data Annotator</div>
+                <div class="snap-exp-company">Nex pred Solutions · Feb–Mar 2026</div>
+                <div class="snap-exp-desc">Video dataset processing, YOLO/COCO annotation conversion, CVAT workflows, ML data quality assurance.</div>
+              </div>
+              <div class="snap-exp-item">
+                <div class="snap-exp-role">HR Internee</div>
+                <div class="snap-exp-company">MGA Industries Pvt. Ltd. · Aug–Sep 2025</div>
+                <div class="snap-exp-desc">Talent acquisition, onboarding, payroll data processing using Oracle HR database.</div>
+              </div>
+              <div class="snap-exp-item">
+                <div class="snap-exp-role">Front End Intern</div>
+                <div class="snap-exp-company">Tara Technologies · Jul–Sep 2023</div>
+                <div class="snap-exp-desc">UI/UX design, Figma prototyping, HTML/CSS development on live client projects.</div>
+              </div>
+            </div>
+          </div>
+          <div class="doc-snap-right">
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-code"></i> Technical Skills</div>
+              <div class="snap-skills">
+                <span>HTML</span><span>CSS</span><span>SQL</span><span>Python</span>
+                <span>Power BI</span><span>Oracle DB</span><span>Odoo ERP</span>
+                <span>SAP ERP</span><span>Figma</span><span>GitHub</span>
+                <span>WordPress</span><span>JIRA</span><span>Adobe CC</span>
+              </div>
+            </div>
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-trophy"></i> Key Achievement</div>
+              <div class="snap-award-box">
+                <div class="snap-award-icon">🏆</div>
+                <div>
+                  <div class="snap-award-title">ICAISAI'26 Selectee</div>
+                  <div class="snap-award-sub">1 of 3 projects — evaluated by DevOps & Cloud expert</div>
+                </div>
+              </div>
+            </div>
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-graduation-cap"></i> Education</div>
+              <div class="snap-edu">
+                <strong>BBIS</strong> — University of Management and Technology<br>
+                <span>Nov 2022 – Aug 2026 · Semester 8</span>
+              </div>
+            </div>
+            <div class="snap-section">
+              <div class="snap-sec-title"><i class="fas fa-certificate"></i> Certifications (10+)</div>
+              <div class="snap-skills small">
+                <span>IT Automation — Google</span>
+                <span>Power BI — Cambridge</span>
+                <span>Project Mgmt — Google</span>
+                <span>Odoo 14 Essentials</span>
+                <span>SAP Business</span>
+                <span>JIRA Scrum — Coursera</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cover Letter Panel -->
+    <div id="docPanel-cl" class="doc-panel reveal" style="display:none">
+      <div class="doc-preview-card glass-card">
+        <div class="doc-preview-header">
+          <div class="doc-meta">
+            <div class="doc-icon-lg" style="background:linear-gradient(135deg,#6366f1,#4f46e5)"><i class="fas fa-envelope-open-text"></i></div>
+            <div>
+              <div class="doc-title">Cover Letter — Business Information Systems</div>
+              <div class="doc-subtitle">Application letter for BIS / Tech roles · Tailored for 2026</div>
+              <div class="doc-tags-row">
+                <span class="doc-tag"><i class="fas fa-calendar"></i> 2026</span>
+                <span class="doc-tag"><i class="fas fa-language"></i> English · Fluent</span>
+                <span class="doc-tag"><i class="fas fa-handshake"></i> Open to Work</span>
+              </div>
+            </div>
+          </div>
+          <div class="doc-action-btns">
+            <button class="doc-preview-btn" onclick="openDocPreview('cl')"><i class="fas fa-eye"></i> Preview</button>
+            <a href="Muhammad_Umer_Faheem_Cover_Letter.pdf" download class="doc-dl-btn"><i class="fas fa-download"></i> Download PDF</a>
+          </div>
+        </div>
+        <!-- Cover Letter Snapshot -->
+        <div class="doc-snapshot cl-snap">
+          <div class="cl-letter-preview">
+            <div class="cl-header-row">
+              <div>
+                <div class="cl-name">Muhammad Umer Faheem</div>
+                <div class="cl-contact-row">
+                  <span><i class="fas fa-map-marker-alt"></i> Iqbal Town, Lahore</span>
+                  <span><i class="fas fa-envelope"></i> umerfaheem632@gmail.com</span>
+                  <span><i class="fab fa-whatsapp"></i> +92 325 8148564</span>
+                </div>
+              </div>
+            </div>
+            <div class="cl-salutation">Dear Hiring Manager,</div>
+            <p class="cl-para">I am writing to express my genuine interest in opportunities within your organization. With a background in <strong>Business Information Systems</strong> and hands-on experience in front-end development, data handling, and business tools, I am eager to begin my professional journey in an environment that values growth, innovation, and impact.</p>
+            <p class="cl-para">Currently in the final phase of my <strong>Bachelor's degree in BBIS at UMT</strong>, I have developed a strong foundation in database systems, business processes, and digital tools including <strong>SQL, Power BI, and modern web technologies</strong>.</p>
+            <p class="cl-para">During my internship at <strong>Tara Technologies</strong>, I worked on real-world projects involving frontend development and UI/UX design using HTML, CSS, Figma, and Adobe Suite. My exposure to <strong>ERP systems</strong> (Odoo, SAP) and data annotation workflows further strengthens my ability to bridge technology and business operations.</p>
+            <p class="cl-para">What truly drives me is the desire to learn, adapt, and contribute meaningfully. I take pride in being <strong>detail-oriented, collaborative,</strong> and committed to continuous improvement — bringing sincerity, responsibility, and a problem-solving mindset to every task.</p>
+            <div class="cl-closing">
+              <p>I would welcome the opportunity to discuss how my skills and motivation align with your team's goals. Thank you for your time and consideration.</p>
+              <div class="cl-sig">Kind regards,<br><strong>Muhammad Umer Faheem</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DOC PREVIEW MODAL ══════════ -->
+<div id="docPreviewModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.65);backdrop-filter:blur(16px);display:none;align-items:center;justify-content:center;padding:1.5rem">
+  <div style="background:rgba(255,255,255,0.96);border-radius:28px;width:100%;max-width:860px;height:90vh;display:flex;flex-direction:column;box-shadow:0 40px 120px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,1);border:1px solid rgba(255,255,255,0.9);overflow:hidden">
+    <div style="padding:1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(16,185,129,0.1);flex-shrink:0;background:rgba(255,255,255,0.8);backdrop-filter:blur(20px)">
+      <div style="display:flex;align-items:center;gap:.8rem">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;color:white"><i class="fas fa-file-pdf"></i></div>
+        <div>
+          <div id="previewModalTitle" style="font-weight:700;font-size:.95rem;color:var(--text)">Document Preview</div>
+          <div style="font-size:.75rem;color:var(--muted)">PDF Viewer — Muhammad Umer Faheem</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:.6rem;align-items:center">
+        <a id="previewDownloadBtn" href="#" download class="doc-dl-btn" style="font-size:.78rem;padding:.4rem 1rem"><i class="fas fa-download"></i> Download</a>
+        <button onclick="closeDocPreview()" style="width:34px;height:34px;border-radius:10px;border:1px solid rgba(16,185,129,0.2);background:rgba(255,255,255,0.8);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;transition:all .2s" onmouseover="this.style.background='rgba(239,68,68,0.1)';this.style.color='#ef4444'" onmouseout="this.style.background='rgba(255,255,255,0.8)';this.style.color='var(--muted)'"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+    <iframe id="previewIframe" src="" style="flex:1;border:none;width:100%" title="Document Preview"></iframe>
+  </div>
+</div>
+
+<style>
+/* ── Documents Section ── */
+.docs-tabs-wrap{
+  display:flex;gap:.6rem;justify-content:center;margin-bottom:2.5rem;
+  padding:.3rem;background:rgba(255,255,255,0.55);border-radius:28px;
+  backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.85);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.9),0 4px 16px rgba(16,185,129,0.08);
+  max-width:380px;margin-left:auto;margin-right:auto;margin-bottom:2.5rem;
+}
+.docs-tab{
+  flex:1;padding:.6rem 1.5rem;border-radius:22px;border:none;cursor:pointer;
+  font-family:'Sora',sans-serif;font-weight:700;font-size:.85rem;
+  color:var(--muted);background:transparent;transition:all .25s cubic-bezier(.34,1.3,.64,1);
+  display:flex;align-items:center;gap:.5rem;justify-content:center;
+}
+.docs-tab.active{
+  background:linear-gradient(145deg,#10b981,#059669);color:white;
+  box-shadow:0 4px 18px rgba(16,185,129,0.4),inset 0 1.5px 0 rgba(255,255,255,0.3);
+}
+.doc-preview-card{
+  border-radius:var(--r-xl);overflow:hidden;
+  box-shadow:var(--sh-xl),inset 0 1px 0 rgba(255,255,255,0.95);
+}
+.doc-preview-header{
+  padding:2rem 2.2rem;display:flex;justify-content:space-between;
+  align-items:flex-start;gap:1.5rem;flex-wrap:wrap;
+  border-bottom:1px solid rgba(16,185,129,0.1);
+}
+.doc-meta{display:flex;align-items:flex-start;gap:1.2rem;flex:1}
+.doc-icon-lg{
+  width:60px;height:60px;border-radius:16px;
+  background:linear-gradient(135deg,#10b981,#059669);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1.6rem;flex-shrink:0;
+  box-shadow:0 6px 20px rgba(16,185,129,0.3);
+}
+.doc-title{font-size:1.25rem;font-weight:800;color:var(--text);margin-bottom:.25rem}
+.doc-subtitle{font-size:.88rem;color:var(--muted);margin-bottom:.6rem}
+.doc-tags-row{display:flex;flex-wrap:wrap;gap:.5rem}
+.doc-tag{
+  padding:.28rem .8rem;border-radius:var(--r-full);
+  background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.16);
+  color:var(--green-dk);font-size:.74rem;font-weight:700;
+  display:inline-flex;align-items:center;gap:.35rem;
+}
+.doc-action-btns{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;flex-shrink:0}
+.doc-preview-btn{
+  padding:.56rem 1.3rem;border-radius:20px;
+  background:rgba(255,255,255,0.72);
+  border:1px solid rgba(255,255,255,0.9);
+  color:var(--green-dk);font-weight:700;font-size:.82rem;cursor:pointer;
+  display:flex;align-items:center;gap:.45rem;
+  transition:all .25s cubic-bezier(.34,1.3,.64,1);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,0.95),0 3px 10px rgba(16,185,129,0.1);
+  font-family:'Sora',sans-serif;
+  backdrop-filter:blur(16px);
+}
+.doc-preview-btn:hover{
+  background:rgba(255,255,255,0.95);transform:translateY(-2px);
+  box-shadow:inset 0 1.5px 0 rgba(255,255,255,1),0 8px 24px rgba(16,185,129,0.22);
+}
+.doc-dl-btn{
+  padding:.56rem 1.3rem;border-radius:20px;
+  background:linear-gradient(145deg,#10b981,#059669);
+  color:white;font-weight:700;font-size:.82rem;
+  display:flex;align-items:center;gap:.45rem;
+  box-shadow:0 4px 16px rgba(16,185,129,0.4),inset 0 1.5px 0 rgba(255,255,255,0.25);
+  transition:all .25s cubic-bezier(.34,1.3,.64,1);
+  text-decoration:none;
+}
+.doc-dl-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(16,185,129,0.5),inset 0 1.5px 0 rgba(255,255,255,0.3)}
+/* Doc Snapshot Grid */
+.doc-snapshot{
+  display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:2rem 2.2rem;
+}
+.snap-section{margin-bottom:1.4rem}
+.snap-sec-title{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;
+  color:var(--green-dk);margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;
+  padding-bottom:.45rem;border-bottom:1px solid rgba(16,185,129,0.1);
+}
+.snap-text{font-size:.85rem;color:var(--text2);line-height:1.75}
+.snap-exp-item{
+  padding:.7rem .9rem;border-radius:var(--r-sm);
+  background:rgba(16,185,129,0.04);border-left:3px solid var(--green);
+  margin-bottom:.65rem;
+}
+.snap-exp-role{font-size:.88rem;font-weight:700;color:var(--text)}
+.snap-exp-company{font-size:.77rem;color:var(--green-dk);font-weight:600;margin:.15rem 0}
+.snap-exp-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.snap-skills{display:flex;flex-wrap:wrap;gap:.4rem}
+.snap-skills span{
+  padding:.25rem .7rem;border-radius:var(--r-full);font-size:.74rem;font-weight:700;
+  background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);color:var(--green-dk);
+}
+.snap-skills.small span{font-size:.7rem;padding:.2rem .6rem}
+.snap-award-box{
+  display:flex;align-items:center;gap:.8rem;padding:.9rem 1rem;
+  border-radius:var(--r-sm);background:linear-gradient(135deg,rgba(245,158,11,0.06),rgba(16,185,129,0.06));
+  border:1px solid rgba(245,158,11,0.18);
+}
+.snap-award-icon{font-size:1.5rem}
+.snap-award-title{font-size:.88rem;font-weight:800;color:var(--text)}
+.snap-award-sub{font-size:.76rem;color:var(--muted)}
+.snap-edu{font-size:.85rem;color:var(--text2);line-height:1.7;padding:.8rem 1rem;background:rgba(16,185,129,0.04);border-radius:var(--r-sm)}
+.snap-edu span{color:var(--muted);font-size:.8rem}
+
+/* Cover Letter styles */
+.cl-snap .doc-snapshot{display:block;padding:0}
+.cl-letter-preview{
+  padding:2.2rem;max-width:700px;margin:0 auto;
+  font-size:.92rem;color:var(--text);line-height:1.85;
+}
+.cl-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.cl-contact-row{
+  display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;margin-bottom:1.5rem;
+  font-size:.79rem;color:var(--muted);font-weight:600;
+}
+.cl-contact-row span{display:flex;align-items:center;gap:.35rem}
+.cl-contact-row i{color:var(--green-dk)}
+.cl-salutation{font-weight:700;color:var(--text);margin-bottom:1rem}
+.cl-para{margin-bottom:.95rem;color:var(--text2)}
+.cl-closing{margin-top:1.2rem;padding-top:1rem;border-top:1px solid rgba(16,185,129,0.1)}
+.cl-sig{margin-top:.8rem;font-weight:600;color:var(--text)}
+.cl-header-row{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:2px solid rgba(16,185,129,0.15)}
+@media(max-width:768px){
+  .doc-snapshot{grid-template-columns:1fr}
+  .doc-preview-header{flex-direction:column}
+  .docs-tabs-wrap{max-width:100%}
+}
+</style>
+
+<div class="ani-divider"></div>
+
+
 <section class="contact-section" id="contact">
   <div class="container" style="position:relative;z-index:1">
     <div class="sec-head reveal">
@@ -3484,45 +4073,127 @@ nav ul { border-radius: 24px; }
 </style>
 
 <!-- ═══════════════════════════════
-     AI CHAT PANEL (Portal)
+     ADVANCED AI CHAT PANEL
 ═══════════════════════════════ -->
 <div id="aiChatOverlay" onclick="if(event.target===this)toggleAIChat()">
   <div id="aiChatPanel">
     <!-- Header -->
     <div class="chat-header">
-      <div class="chat-header-avatar">🤖</div>
+      <div class="chat-header-avatar">
+        <span style="font-size:1.1rem">✨</span>
+        <div class="chat-live-dot" style="position:absolute;bottom:2px;right:2px;width:9px;height:9px"></div>
+      </div>
       <div class="chat-header-info">
         <span class="chat-header-name">Umer's AI Assistant</span>
         <div class="chat-header-sub">
           <div class="chat-live-dot"></div>
-          Powered by Portfolio Intelligence
+          Powered by Umer· Portfolio Expert
         </div>
       </div>
-      <button class="chat-close-btn" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+      <div style="display:flex;gap:.4rem;align-items:center;margin-left:auto">
+        <!-- Minimize -->
+        <button class="chat-ctrl-btn" title="Clear chat" onclick="clearChatHistory()"><i class="fas fa-trash-alt" style="font-size:.7rem"></i></button>
+        <button class="chat-close-btn" onclick="toggleAIChat()"><i class="fas fa-times"></i></button>
+      </div>
     </div>
+
+    <!-- Mode tabs -->
+    <div class="chat-mode-tabs">
+      <button class="chat-mode-tab active" onclick="setChatMode('chat')" id="modeChat"><i class="fas fa-comments"></i> Chat</button>
+      <button class="chat-mode-tab" onclick="setChatMode('cv')" id="modeCv"><i class="fas fa-file-alt"></i> Ask CV</button>
+      <button class="chat-mode-tab" onclick="setChatMode('contact')" id="modeContact"><i class="fas fa-paper-plane"></i> Quick Contact</button>
+    </div>
+
     <!-- Quick chips -->
     <div class="chat-chips" id="chatChips">
-      <button class="chat-chip" onclick="chipAsk('Who is Umer Faheem?')">👤 Who is Umer?</button>
-      <button class="chat-chip" onclick="chipAsk('What are his skills?')">⚡ Skills</button>
+      <button class="chat-chip" onclick="chipAsk('Who is Umer Faheem and what does he do?')">👤 Who is Umer?</button>
+      <button class="chat-chip" onclick="chipAsk('What are his technical skills?')">⚡ Skills</button>
       <button class="chat-chip" onclick="chipAsk('Tell me about his projects')">🚀 Projects</button>
-      <button class="chat-chip" onclick="chipAsk('What is his experience?')">💼 Experience</button>
+      <button class="chat-chip" onclick="chipAsk('What is his work experience?')">💼 Experience</button>
       <button class="chat-chip" onclick="chipAsk('What certifications does he have?')">🏅 Certs</button>
-      <button class="chat-chip" onclick="chipAsk('Download his CV')">📄 CV &amp; Cover Letter</button>
+      <button class="chat-chip" onclick="chipAsk('Is Umer available for work and how do I contact him?')">📞 Hire Him</button>
+      <button class="chat-chip" onclick="chipAsk('What makes Umer unique as a candidate?')">⭐ Why Umer?</button>
+      <button class="chat-chip" onclick="chipAsk('Tell me about his ICAISAI award and capstone project')">🏆 Award</button>
     </div>
+
     <!-- Messages -->
     <div class="chat-messages" id="chatMessages">
       <div class="chat-msg bot">
         <div class="chat-msg-icon">✨</div>
-        <div class="chat-bubble">Hey there! 👋 I'm Umer's personal AI assistant. I know everything about his portfolio, skills, experience, and journey.<br><br>Ask me anything — I'm here to help you get to know him better!</div>
+        <div style="display:flex;flex-direction:column;gap:.25rem;max-width:100%">
+          <div class="chat-bubble">
+            Hey there! 👋 I'm <strong>Umer's AI Portfolio Assistant</strong> — I know everything about his skills, experience, projects, and more.<br><br>
+            💼 Ask me about his <strong>CV</strong>, <strong>projects</strong>, or whether he'd be a great fit for your team!
+          </div>
+          <div class="chat-ts">Now</div>
+        </div>
       </div>
     </div>
-    <!-- Input -->
+
+    <!-- Typing -->
+    <!-- Input bar -->
     <div class="chat-input-bar">
-      <textarea class="chat-input" id="chatInput" placeholder="Ask me anything about Umer…" rows="1" ></textarea>
-      <button class="chat-send-btn" onclick="sendChatMsg()"><i class="fas fa-paper-plane"></i></button>
+      <div class="chat-input-wrap">
+        <textarea id="chatInput" class="chat-input" placeholder="Ask anything about Umer..." rows="1"></textarea>
+      </div>
+      <button class="chat-send-btn" onclick="sendChatMsg()" title="Send message">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div class="chat-footer-bar">
+      <span><i class="fas fa-shield-alt" style="color:var(--green);margin-right:.3rem"></i>Powered by Umer AI · Portfolio-specific</span>
+      <span onclick="document.getElementById('docs').scrollIntoView({behavior:'smooth'});toggleAIChat()" style="cursor:pointer;color:var(--green-dk);font-weight:700"><i class="fas fa-download"></i> Get CV</span>
     </div>
   </div>
 </div>
+
+<!-- Float Chat Button -->
+<button id="floatChatBtn" onclick="toggleAIChat()" title="Chat with AI">
+  <i class="fas fa-wand-magic-sparkles" style="font-size:1.1rem"></i>
+  <div class="fcb-ping"></div>
+</button>
+
+<style>
+/* ── Advanced Chat Styles ── */
+.chat-ctrl-btn{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,0.45);border:1px solid rgba(255,255,255,0.8);
+  color:var(--muted);font-size:.75rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.chat-ctrl-btn:hover{background:rgba(239,68,68,0.12);color:#ef4444}
+
+/* Mode tabs */
+.chat-mode-tabs{
+  display:flex;gap:.3rem;padding:.5rem 1rem;flex-shrink:0;
+  border-bottom:1px solid rgba(255,255,255,0.45);
+  background:rgba(255,255,255,0.18);
+}
+.chat-mode-tab{
+  flex:1;padding:.36rem .5rem;border-radius:12px;border:none;cursor:pointer;
+  font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;
+  color:var(--muted);background:transparent;transition:all .22s;
+  display:flex;align-items:center;justify-content:center;gap:.35rem;
+}
+.chat-mode-tab.active{
+  background:linear-gradient(145deg,#10b981,#059669);color:white;
+  box-shadow:0 3px 12px rgba(16,185,129,0.35),inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.chat-mode-tab:hover:not(.active){background:rgba(255,255,255,0.5);color:var(--green-dk)}
+
+/* Input wrap */
+.chat-input-wrap{flex:1;position:relative}
+.chat-footer-bar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.35rem 1.2rem .6rem;
+  font-size:.67rem;color:var(--muted);font-weight:600;
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.15);
+}
+</style>
 
 <script>
 /* ══════════ CURSOR ══════════ */
@@ -3774,12 +4445,164 @@ document.querySelectorAll('.skills-panel').forEach(p=>bObs.observe(p));
 
 
 /* ══════════════════════════════════════════════════════
-   AI CHATBOT v2 — Fixed + Advanced Portfolio Intelligence
+   DOCUMENT VIEWER
+══════════════════════════════════════════════════════ */
+function openDocViewer(type){
+  const overlay = document.getElementById('pdfViewerOverlay');
+  const body = document.getElementById('pdfViewerBody');
+  const title = document.getElementById('pdfModalTitle');
+  const sub = document.getElementById('pdfModalSub');
+  const icon = document.getElementById('pdfModalIcon');
+  const dlBtn = document.getElementById('pdfModalDlBtn');
+  if(!overlay||!body) return;
+
+  if(type === 'cv'){
+    title.textContent = 'CV — Muhammad Umer Faheem';
+    sub.textContent = 'Full Resume · PDF · 2026';
+    icon.innerHTML = '<i class="fas fa-file-alt"></i>';
+    icon.style.background = 'linear-gradient(145deg,#10b981,#059669)';
+    dlBtn.href = 'Muhammad_Umer_Faheem_-_CV.pdf';
+    dlBtn.download = 'Muhammad_Umer_Faheem_-_CV.pdf';
+    body.innerHTML = `<embed src="Muhammad_Umer_Faheem_-_CV.pdf#toolbar=0&navpanes=0" type="application/pdf" width="100%" height="100%">
+    <div class="pdf-viewer-fallback" id="pdfFallback" style="display:none">
+      <i class="fas fa-file-pdf"></i>
+      <p>Your browser doesn't support inline PDF preview.<br>Use the <strong>Download CV</strong> button to get the file.</p>
+      <a href="Muhammad_Umer_Faheem_-_CV.pdf" download class="pdf-modal-dl-btn"><i class="fas fa-download"></i> Download CV</a>
+    </div>`;
+  } else {
+    title.textContent = 'Cover Letter — Muhammad Umer Faheem';
+    sub.textContent = 'Application Letter · PDF · 2026';
+    icon.innerHTML = '<i class="fas fa-envelope-open-text"></i>';
+    icon.style.background = 'linear-gradient(135deg,#f59e0b,#10b981)';
+    dlBtn.href = 'Muhammad_Umer_Faheem_Cover_Letter.pdf';
+    dlBtn.download = 'Muhammad_Umer_Faheem_Cover_Letter.pdf';
+    body.innerHTML = `<div class="cl-preview-content">
+      <h3>Muhammad Umer Faheem</h3>
+      <div class="cl-contact">Iqbal Town, Lahore &nbsp;|&nbsp; umerfaheem632@gmail.com &nbsp;|&nbsp; WhatsApp +92 325 8148564</div>
+      <div class="cl-date">2026</div>
+      <div class="cl-subject">Subject: Application for Internship / Entry-Level Role in Business Information Systems / IT / Front-End Development</div>
+      <p>Dear Hiring Manager,</p>
+      <p>I am writing to express my interest in an internship or entry-level position within your organization, aligned with my academic background in Business Information Systems and practical experience in IT support, front-end development, and ERP systems.</p>
+      <p>Currently, I am pursuing a Bachelor's degree in Business Information System at the University of Management and Technology, Lahore. My academic program has provided me with a solid foundation in database systems, business process management, and digital tools such as SQL, Power BI, and MS Office Suite.</p>
+      <p>In my recent internship at Tara Technologies, I contributed to front-end web development and UI/UX design using HTML, CSS, Java, GitHub, and Adobe Creative Suite. I also gained experience in digital marketing and administrative coordination during my internship at Forever Living Products.</p>
+      <p>I have completed several certification courses from reputable platforms such as Google, Microsoft, and Coursera, including Power BI, WordPress Development, and IT Automation with Python. Furthermore, I led a capstone ERP project using Odoo for a sustainable leather brand, where I designed integrated business workflows across CRM, HR, sales, and inventory modules.</p>
+      <p>I am particularly interested in applying my combined technical and business knowledge to contribute to technology-driven projects in a structured and innovative environment. I am willing to relocate and adapt to new cultural and professional settings to grow and add value to your team.</p>
+      <p>Please find attached my CV for further details. I am available at your convenience for an interview and can provide references upon request.</p>
+      <p>Thank you for considering my application.</p>
+      <div class="cl-sig">Kind regards,<br>Muhammad Umer Faheem</div>
+    </div>`;
+  }
+
+  overlay.style.display = 'flex';
+  requestAnimationFrame(()=>overlay.classList.add('open'));
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDocViewer(){
+  const overlay = document.getElementById('pdfViewerOverlay');
+  if(!overlay) return;
+  overlay.classList.remove('open');
+  setTimeout(()=>{ overlay.style.display='none'; document.body.style.overflow=''; },300);
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDocViewer(); });
+
+/* ══════════════════════════════════════════════════════
+   AI CHATBOT 
 ══════════════════════════════════════════════════════ */
 let chatOpen = false;
 let chatHistory = [];
 let unreadCount = 0;
+let isStreaming = false;
 
+const PORTFOLIO_SYSTEM_PROMPT = `You are Umer's AI portfolio assistant — a friendly, knowledgeable, and conversational assistant embedded in Muhammad Umer Faheem's personal portfolio website.
+
+You know everything about Umer and should answer questions confidently and enthusiastically about him. Here is his complete profile:
+
+**IDENTITY**
+- Full Name: Muhammad Umer Faheem
+- Location: Iqbal Town, Lahore, Pakistan 🇵🇰
+- Email: umerfaheem632@gmail.com | m.umer.faheem@gmail.com
+- Phone: 031-443-33022 | WhatsApp: 032-581-48564
+- LinkedIn: linkedin.com/in/youknowumer
+- GitHub: github.com/youknowumer
+
+**EDUCATION**
+- Bachelor of Business Information Systems (BBIS) — University of Management and Technology (UMT), Lahore
+- Currently in 8th (Final) Semester | Nov 2022 – Aug 2026
+- FSc Pre-Engineering from Unique College (UGI), 2020–2022
+
+**PROFESSIONAL EXPERIENCE**
+1. Data Annotator — Nex pred Solutions (Remote) | Feb–Mar 2026
+   - Processed video datasets for computer vision (ML/AI)
+   - CVAT annotation, YOLO/COCO format conversion, quality validation
+2. HR Internee — MGA Industries Pvt. Ltd. (Onsite, Lahore) | Aug–Sep 2025
+   - Talent acquisition (CV screening, interview scheduling), onboarding
+   - Payroll processing, employee records via Oracle HR database
+3. Front End Intern — Tara Technologies Pvt. Ltd. (Onsite) | Jul–Sep 2023
+   - UI/UX design using Figma, Photoshop, Illustrator
+   - Frontend coding: HTML, CSS, Java; collaboration via GitHub
+   - Recognized by company for outstanding contributions
+
+**TECHNICAL SKILLS**
+- Frontend: HTML5, CSS3, JavaScript (Basic), WordPress, Responsive Design
+- Data & BI: Power BI, SQL, Oracle DB, IBM SPSS, Data Annotation (CVAT/YOLO/COCO)
+- Enterprise: Odoo ERP, SAP Basics, Oracle HR
+- Design: Figma, Adobe Photoshop, Illustrator, Premiere Pro, After Effects, Audition, Canva
+- Dev Tools: GitHub, Draw.io, JIRA (Scrum)
+- Languages: Python (Basic), C++ (Basic)
+- Productivity: MS Excel, Word, PowerPoint, Access, Project
+
+**PROJECTS**
+1. Artisan Aura Creations — Sustainable Leather Goods Brand (CAPSTONE + EXHIBITION)
+   - Full Odoo ERP implementation: CRM, HR, Sales, Inventory, Manufacturing, Analytics, Marketing, Procurement
+   - Selected as 1 of only 3 projects for ICAISAI'26 exhibition at HSM-UMT
+   - Evaluated by a DevOps & Cloud industry expert from Nex Skill
+2. Student Registration System — Oracle DB, ER diagrams, conceptual & logical modeling
+3. Library Management System — Fully normalized relational DB schema, Oracle DB
+4. Power BI Business Dashboard — Sales KPIs, DAX metrics, trend analysis
+5. ML Video Dataset Pipeline — CVAT, YOLO/COCO annotation for computer vision
+
+**CERTIFICATIONS (10+)**
+- IT Automation with Python — Google (Apr 2025)
+- Microsoft Power BI (Data Analysis & Visualization) — Uni Athena / Cambridge UK (Apr 2025)
+- WordPress Development — Coursera (Apr 2025)
+- Canva Graphic Design — Simplilearn (Apr 2025)
+- Managing Basic Business Scenarios — SAP (Jun 2025)
+- Odoo 14 Essentials — Odoo (Jun 2025)
+- Foundations of Project Management — Google (Jun 2025)
+- Developing Interpersonal Skills — IBM (Jul 2025)
+- Jira SCRUM Project Management — Coursera (Jul 2025)
+
+**AWARDS & ACHIEVEMENTS**
+- ICAISAI'26 Project Exhibition Selectee — Top 3 projects, HSM UMT (evaluated by industry DevOps expert)
+- Capstone Project Lead — Artisan Aura Creations ERP system
+- Recognized Intern — Tara Technologies Pvt. Ltd.
+- Cambridge International Qualification — Uni Athena, UK
+- Multi-Platform Certified — Google, Microsoft, IBM, SAP, Coursera, Simplilearn
+
+**DOCUMENTS**
+- CV: available to view and download in the "My Documents" section of the portfolio
+- Cover Letter: available to view and download in the "My Documents" section of the portfolio
+
+**AVAILABILITY**
+Umer is actively open to: Frontend Development, Business Intelligence & Data Analysis, ERP Implementation & Consulting, UI/UX Design roles.
+
+**PERSONALITY & STRENGTHS**
+- Detail-oriented, collaborative, continuous learner
+- Bridges business and technology
+- Empathetic listener, strong customer service, leadership skills
+- Fluent in English and Urdu
+
+---
+INSTRUCTIONS:
+- Be warm, enthusiastic, and conversational. Use emojis tastefully.
+- Answer questions about Umer confidently using the info above.
+- For document questions, tell them to scroll to the "Documents" section (or click the Resume button in the nav) to view/download the PDF.
+- If asked something totally unrelated to Umer's portfolio, gently redirect.
+- Keep responses concise but helpful. Use bold formatting for key info.
+- You can use HTML tags like <strong>, <br>, <em> in your responses as they will be rendered.`;
+
+/* ══════════ CHAT: TOGGLE ══════════ */
 function toggleAIChat(){
   chatOpen = !chatOpen;
   const overlay = document.getElementById('aiChatOverlay');
@@ -3787,18 +4610,13 @@ function toggleAIChat(){
   if(chatOpen){
     overlay.style.display = 'flex';
     requestAnimationFrame(()=>{ overlay.classList.add('open'); });
-    setTimeout(()=>{
-      const inp = document.getElementById('chatInput');
-      if(inp) inp.focus();
-    }, 380);
-    // Clear unread
+    setTimeout(()=>{ const inp = document.getElementById('chatInput'); if(inp) inp.focus(); }, 380);
     unreadCount = 0;
     updateUnreadBadge();
   } else {
     overlay.classList.remove('open');
     setTimeout(()=>{ overlay.style.display = 'none'; }, 300);
   }
-  // sync float button
   const fb = document.getElementById('floatChatBtn');
   if(fb) fb.style.opacity = chatOpen ? '0' : '1';
 }
@@ -3810,23 +4628,65 @@ function updateUnreadBadge(){
   else { b.classList.remove('show'); }
 }
 
+/* ══════════ CHAT: MODE SWITCHING ══════════ */
+let currentChatMode = 'chat';
+const chatModePrompts = {
+  chat: `You are Umer's helpful portfolio AI. Answer questions warmly using his profile info.`,
+  cv: `You are a CV/resume expert assistant for Umer Faheem. Help users understand his qualifications, skills, and fit for roles. Highlight relevant experience and suggest how his background matches opportunities.`,
+  contact: `You are a professional contact assistant for Umer Faheem. Help users compose messages to Umer, ask about availability, or get his contact details. Be brief and professional. Always include: Email: umerfaheem632@gmail.com | WhatsApp: +92 325 8148564 | LinkedIn: linkedin.com/in/youknowumer`
+};
+
+function setChatMode(mode){
+  currentChatMode = mode;
+  document.querySelectorAll('.chat-mode-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('mode' + mode.charAt(0).toUpperCase() + mode.slice(1)).classList.add('active');
+
+  const placeholders = {
+    chat: 'Ask anything about Umer…',
+    cv: 'Ask about his qualifications or skills…',
+    contact: 'How do I reach Umer? Is he available?…'
+  };
+  const modeGreetings = {
+    chat: null,
+    cv: `📄 <strong>CV Mode</strong> — I'll help you understand Umer's qualifications, match his skills to roles, and answer hiring questions. What would you like to know?`,
+    contact: `📞 <strong>Contact Mode</strong> — Need to reach Umer?<br><br>📧 <strong>umerfaheem632@gmail.com</strong><br>📱 <strong>+92 325 8148564</strong> (WhatsApp)<br>🔗 <a href="https://linkedin.com/in/youknowumer" target="_blank">linkedin.com/in/youknowumer</a><br><br>I can also help you write a professional message to him!`
+  };
+
+  const inp = document.getElementById('chatInput');
+  if(inp) inp.placeholder = placeholders[mode] || placeholders.chat;
+
+  if(modeGreetings[mode]){
+    addMessage(modeGreetings[mode], 'bot');
+  }
+}
+
+/* ══════════ CHAT: CLEAR HISTORY ══════════ */
+function clearChatHistory(){
+  chatHistory = [];
+  const msgs = document.getElementById('chatMessages');
+  if(msgs){
+    msgs.innerHTML = '';
+    addMessage(`🗑️ Chat cleared! Ask me anything about Umer's portfolio, experience, or projects.`, 'bot');
+  }
+  showToast('🗑️ Chat cleared', 'info');
+}
+
+/* ══════════ CHAT: CHIP QUICK-SEND ══════════ */
 function chipAsk(q){
   const inp = document.getElementById('chatInput');
   if(inp){ inp.value = q; }
   sendChatMsg();
 }
 
+/* ══════════ CHAT: MESSAGE BUILDER ══════════ */
 function createMsgEl(text, type){
   const div = document.createElement('div');
   div.className = 'chat-msg ' + type;
-
   const icon = document.createElement('div');
   icon.className = 'chat-msg-icon';
-  if(type === 'bot'){
-    icon.innerHTML = '<span style="font-size:.85rem">✨</span>';
-  } else {
-    icon.innerHTML = '<i class="fas fa-user" style="font-size:.72rem"></i>';
-  }
+  icon.innerHTML = type === 'bot'
+    ? '<span style="font-size:.85rem">✨</span>'
+    : '<i class="fas fa-user" style="font-size:.72rem"></i>';
 
   const bubble = document.createElement('div');
   bubble.className = 'chat-bubble';
@@ -3837,13 +4697,13 @@ function createMsgEl(text, type){
   const now = new Date();
   ts.textContent = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
 
-  div.appendChild(icon);
   const wrap = document.createElement('div');
   wrap.style.cssText = 'display:flex;flex-direction:column;gap:.25rem;max-width:100%';
   wrap.appendChild(bubble);
   wrap.appendChild(ts);
-  div.appendChild(wrap);
 
+  div.appendChild(icon);
+  div.appendChild(wrap);
   return div;
 }
 
@@ -3856,6 +4716,7 @@ function addMessage(text, type){
   return div;
 }
 
+/* ══════════ CHAT: TYPING INDICATOR ══════════ */
 function showTyping(){
   const msgs = document.getElementById('chatMessages');
   if(!msgs) return;
@@ -3871,87 +4732,16 @@ function hideTyping(){
   if(t) t.remove();
 }
 
-/* ── Extended Knowledge Base ── */
-const KB = {
-  identity: {
-    k:['who','umer','name','person','introduce','yourself','about','he','him','profile','background'],
-    r:`Muhammad Umer Faheem is a passionate final-year BBIS student at UMT, Lahore — blending <strong>frontend development</strong>, <strong>business intelligence</strong>, and <strong>system analysis</strong> into a unified, results-driven approach.<br><br>🎓 <strong>8th Semester</strong> · University of Management & Technology<br>📍 <strong>Lahore, Pakistan</strong><br>🚀 Actively open to full-time opportunities in Tech, Data, or ERP roles.<br><br>A builder at heart — Umer turns complex ideas into functional, elegant systems.`
-  },
-  skills: {
-    k:['skill','know','tech','stack','language','tool','capable','expertise','html','css','javascript','python','sql','power bi','erp','odoo','frontend','code','programming'],
-    r:`Umer has a well-rounded technical toolkit:<br><br>🖥️ <strong>Frontend:</strong> HTML5 · CSS3 · JavaScript · WordPress · Responsive Design<br>📊 <strong>Data & BI:</strong> Power BI · SQL · Oracle DB · Data Annotation (CVAT/YOLO/COCO)<br>🏢 <strong>Enterprise:</strong> Odoo ERP · SAP Basics · Oracle HR<br>🎨 <strong>Design:</strong> Figma · Photoshop · Illustrator · Canva · UI/UX<br>💼 <strong>Productivity:</strong> MS Excel · PowerPoint · MS Project · Notion · JIRA<br><br>Also a <strong>Python enthusiast</strong> with Google IT Automation certification! 🐍`
-  },
-  experience: {
-    k:['experience','work','job','internship','company','career','professional','mga','nex pred','data annotator','hr','intern','role','worked'],
-    r:`Umer has real-world experience across 3 distinct domains:<br><br>🤖 <strong>Data Annotator — Nex pred Solutions</strong><br><em>Feb–Mar 2026 · Remote</em><br>Processed video datasets for computer vision AI. Worked with CVAT, converted between YOLO/COCO formats, managed end-to-end ML data pipelines.<br><br>🏭 <strong>HR Internee — MGA Industries Pvt. Ltd.</strong><br><em>Aug–Sep 2025 · Lahore</em><br>Supported talent acquisition, onboarding & payroll operations using Oracle HR in a large-scale manufacturing environment.<br><br>💻 <strong>Frontend UI Development</strong><br>Hands-on experience designing responsive web interfaces across academic and freelance projects.`
-  },
-  projects: {
-    k:['project','build','made','portfolio','erp','artisan','aura','odoo','icaisai','capstone','developed','created','work','built'],
-    r:`Umer's flagship project — <strong>Artisan Aura Creations ERP System</strong>:<br><br>🏆 <strong>ICAISAI'26 Selectee</strong> — Top 3 of all HSM UMT final projects, evaluated by a DevOps & Cloud expert from Nex Skill.<br><br>Built a full-scale <strong>Odoo ERP</strong> for a sustainable leather goods brand:<br>✅ CRM · Sales · Inventory · Manufacturing · HR<br>✅ Custom workflows · BI dashboards · Process automation<br><br>Other work includes Power BI dashboards, web interfaces, Oracle DB schemas, and ML data annotation pipelines.`
-  },
-  education: {
-    k:['education','degree','university','umt','bbis','study','student','semester','cgpa','academic','gpa','qualification','graduate'],
-    r:`🎓 <strong>BBIS — Bachelor of Business Information Systems</strong><br>University of Management and Technology (UMT), Lahore<br>Currently in <strong>8th (Final) Semester</strong> · 2022–2026<br><br>This degree uniquely bridges <strong>business strategy</strong> and <strong>technology</strong> — covering ERP systems, database design, information systems analysis, and digital business transformation.<br><br>It's what allows Umer to speak both the language of business and tech fluently. 🤝`
-  },
-  certifications: {
-    k:['cert','certification','course','google','ibm','coursera','microsoft','sap','odoo','certified','training','learn','qualified'],
-    r:`Umer holds <strong>10+ verified certifications</strong> from globally recognized platforms:<br><br>🔵 <strong>Google</strong> — IT Automation with Python · Project Management Foundations<br>🟡 <strong>Microsoft / Uni Athena (Cambridge UK)</strong> — Power BI Data Analysis<br>🟢 <strong>Coursera</strong> — WordPress Development · JIRA Scrum Management<br>🔴 <strong>SAP</strong> — Managing Basic Business Scenarios<br>🟣 <strong>Odoo</strong> — Odoo 14 Essentials<br>🔵 <strong>IBM</strong> — Developing Interpersonal Skills<br>🟦 <strong>Simplilearn</strong> — Canva Graphic Design<br><br><em>All verified. All practical. All earned with dedication. ✨</em>`
-  },
-  contact: {
-    k:['contact','email','reach','hire','phone','whatsapp','linkedin','github','connect','talk','message','opportunity','reach out','get in touch'],
-    r:`You can reach Umer through multiple channels:<br><br>📧 <strong>Email:</strong> m.umer.faheem@gmail.com<br>📞 <strong>Phone:</strong> 031-443-33022<br>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/923258148564" target="_blank" style="color:var(--green-dk);font-weight:700">032-581-48564</a><br>💼 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">youknowumer</a><br>🐙 <strong>GitHub:</strong> <a href="https://github.com/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">youknowumer</a><br>📍 <strong>Location:</strong> Iqbal Town, Lahore 🇵🇰<br><br>Or scroll to <strong>Let's Connect</strong> to send a direct message! 👇`
-  },
-  cv: {
-    k:['cv','resume','download','cover letter','pdf','document','hire','apply','get cv','send cv'],
-    r:`You can download Umer's documents directly:<br><br>📄 <strong>CV / Resume</strong> — Full professional resume, PDF format · Updated 2026<br>✉️ <strong>Cover Letter</strong> — Tailored application letter, DOCX format<br><br>👉 Scroll to the <strong>"Download My Documents"</strong> section and click to download instantly. Both files are ready for recruiters and hiring managers.`
-  },
-  awards: {
-    k:['award','recognition','achievement','icaisai','trophy','honor','selected','exhibition','won','prize','top'],
-    r:`Umer's proudest recognition:<br><br>🏆 <strong>ICAISAI'26 Project Exhibition Selectee</strong><br>Selected as 1 of only <strong>3 projects</strong> for exhibition at the International Conference on AI, Systems & Intelligent Applications 2026.<br><br>Evaluated by a <strong>DevOps & Cloud industry expert</strong> from Nex Skill — recognizing technical depth and business applicability.<br><br>Also served as <strong>Capstone Project Lead</strong> at UMT, guiding his team through the full ERP implementation lifecycle. 🎯`
-  },
-  dedication: {
-    k:['dedication','passionate','drive','motivation','why','philosophy','approach','work ethic','hardworking','committed','values','mindset'],
-    r:`What makes Umer stand out isn't just skill — it's his <em>mindset</em>:<br><br>💡 Technology should solve <strong>real problems</strong>, not just look impressive<br>🎯 Obsessively <strong>detail-oriented</strong> — pixel-perfect UI or clean DB schema<br>📈 <strong>Continuous learner</strong> — 10+ certs, multiple internships, award-winning capstone while studying full-time<br>🤝 Thrives in <strong>collaborative environments</strong> bridging business & tech<br><br><em>"Build systems that are as beautiful on the inside as they appear on the outside."</em>`
-  },
-  availability: {
-    k:['available','open to work','looking for','seeking','job search','freelance','hire','available for'],
-    r:`Yes! Umer is <strong>actively open to opportunities</strong> right now! 🟢<br><br>He's especially interested in:<br>💻 Frontend Development roles<br>📊 Business Intelligence & Data Analysis<br>🏢 ERP Implementation & Consulting<br>🎨 UI/UX Design roles<br><br>📧 Email: <strong>m.umer.faheem@gmail.com</strong><br>💬 WhatsApp: <a href="https://wa.me/923258148564" target="_blank" style="color:var(--green-dk);font-weight:700">032-581-48564</a><br><br>He responds quickly and professionally! 🚀`
-  }
-};
-
-const GREET_REPLIES = [
-  `Hello! 👋 Great to meet you! I'm Umer's personal AI assistant.<br><br>I know <em>everything</em> about his portfolio, skills, experience, and journey. What would you like to know?<br><br>Try: <strong>skills</strong>, <strong>projects</strong>, <strong>experience</strong>, or <strong>contact</strong>!`,
-  `Hey there! 👋 Welcome! I'm Umer's portfolio assistant, here to help you explore his work and background.<br><br>Ask me anything — I'm powered by Umer's complete profile! 🚀`
-];
-const THANKS_REPLIES = [
-  `You're very welcome! 😊 Happy to help you learn more about Umer. Is there anything else you'd like to know?`,
-  `Glad I could help! 🙌 Feel free to ask anything else about Umer's skills, experience, or how to get in touch.`
-];
-const FALLBACKS = [
-  `That's an interesting question! I'm specifically trained on Umer's portfolio.<br><br>Try asking about his <strong>skills</strong>, <strong>projects</strong>, <strong>experience</strong>, <strong>certifications</strong>, or <strong>how to contact him</strong>. 😊`,
-  `I know Umer's portfolio inside out, but that's outside my scope!<br><br>How about I tell you about his <strong>award-winning ERP project</strong>, his <strong>tech stack</strong>, or how to <strong>download his CV</strong>? 📄`,
-  `Great question — but I'm focused on portfolio topics!<br><br>Ask me about Umer's <strong>experience</strong>, <strong>skills</strong>, <strong>certifications</strong>, or his journey to becoming a <strong>Frontend & BI developer</strong>. 🚀`
-];
-
-function getBotResponse(input){
-  const q = input.toLowerCase().trim();
-  // Knowledge base
-  for(const [,cat] of Object.entries(KB)){
-    if(cat.k.some(k => q.includes(k))) return cat.r;
-  }
-  // Greetings
-  if(/^(hi|hello|hey|yo|sup|salaam|assalam|greet|howdy|hiya|hai)/.test(q))
-    return GREET_REPLIES[Math.floor(Math.random()*GREET_REPLIES.length)];
-  // Thanks
-  if(/thank|thanks|appreciated|great|awesome|nice|perfect|wonderful|helpful/.test(q))
-    return THANKS_REPLIES[Math.floor(Math.random()*THANKS_REPLIES.length)];
-  // Hire intent
-  if(/hire|job|opportunity|position|opening|role|recruit|looking for/.test(q))
-    return `Umer is <strong>actively open to exciting opportunities!</strong><br><br>Interested in roles involving:<br>🖥️ Frontend Development<br>📊 Business Intelligence & Data Analysis<br>🏢 ERP Implementation & Consulting<br><br>📧 <strong>m.umer.faheem@gmail.com</strong><br>💼 <a href="https://linkedin.com/in/youknowumer" target="_blank" style="color:var(--green-dk);font-weight:700">LinkedIn</a> — responds quickly and professionally! 🚀`;
-  return FALLBACKS[Math.floor(Math.random()*FALLBACKS.length)];
+function setChatInputDisabled(disabled){
+  const input = document.getElementById('chatInput');
+  const btn = document.querySelector('.chat-send-btn');
+  if(input) input.disabled = disabled;
+  if(btn){ btn.disabled = disabled; btn.style.opacity = disabled ? '.5' : '1'; }
 }
 
+/* ══════════ CHAT: SEND MESSAGE (Streaming-ready) ══════════ */
 async function sendChatMsg(){
+  if(isStreaming) return;
   const input = document.getElementById('chatInput');
   if(!input) return;
   const text = input.value.trim();
@@ -3960,47 +4750,137 @@ async function sendChatMsg(){
   input.style.height = 'auto';
 
   addMessage(text, 'user');
-  chatHistory.push({role:'user', text});
+  chatHistory.push({role:'user', content: text});
 
+  isStreaming = true;
+  setChatInputDisabled(true);
   showTyping();
-  const delay = 700 + Math.random()*800;
-  setTimeout(()=>{
+
+  // Build mode-aware system prompt
+  const modePrompt = chatModePrompts[currentChatMode] || chatModePrompts.chat;
+  const systemPrompt = PORTFOLIO_SYSTEM_PROMPT + '\n\n--- CURRENT MODE ---\n' + modePrompt;
+
+  const messages = chatHistory.map(m => ({role: m.role, content: m.content}));
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: systemPrompt,
+        messages: messages
+      })
+    });
+
     hideTyping();
-    const response = getBotResponse(text);
-    addMessage(response, 'bot');
-    chatHistory.push({role:'bot', text:response});
-    // Add suggested follow-ups
-    addSuggestions(text);
-  }, delay);
+
+    if(!response.ok){ throw new Error('API error ' + response.status); }
+
+    const data = await response.json();
+    const replyText = data.content?.[0]?.text || "I'm having a moment! Please try again. 😊";
+
+    // Format markdown → HTML
+    const formatted = replyText
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code style="background:rgba(16,185,129,0.1);padding:.1rem .35rem;border-radius:5px;font-size:.82em;font-family:monospace">$1</code>')
+      .replace(/\n\n/g, '<br><br>')
+      .replace(/\n/g, '<br>');
+
+    addMessage(formatted, 'bot');
+    chatHistory.push({role:'assistant', content: replyText});
+
+    // Smart follow-up chips based on reply content
+    addSmartChips(replyText);
+
+  } catch(err){
+    hideTyping();
+    addMessage(`⚠️ Connection issue. You can reach Umer directly:<br><br>📧 <strong>umerfaheem632@gmail.com</strong><br>📱 <strong>+92 325 8148564</strong> (WhatsApp)`, 'bot');
+    console.error('Chat API error:', err);
+  }
+
+  isStreaming = false;
+  setChatInputDisabled(false);
+  setTimeout(()=>{ const inp = document.getElementById('chatInput'); if(inp) inp.focus(); }, 100);
 }
 
-function addSuggestions(lastQ){
+/* ══════════ CHAT: SMART FOLLOW-UP CHIPS ══════════ */
+function addSmartChips(replyText){
   const msgs = document.getElementById('chatMessages');
   if(!msgs) return;
-  const q = lastQ.toLowerCase();
-  let suggestions = [];
-  if(q.includes('skill') || q.includes('tech')) suggestions = ["Tell me about projects","What certifications does he have?","How to contact him?"];
-  else if(q.includes('project') || q.includes('erp')) suggestions = ["What skills does he use?","Tell me about his experience","Download his CV"];
-  else if(q.includes('contact') || q.includes('hire')) suggestions = ["What are his skills?","See his projects","Download CV"];
-  else if(q.includes('cert')) suggestions = ["What projects did he build?","What's his experience?","Who is Umer?"];
-  else suggestions = ["What are his skills?","Tell me about projects","How to contact him?"];
 
-  if(!suggestions.length) return;
-  const chipRow = document.createElement('div');
-  chipRow.className = 'chat-suggest-row';
-  suggestions.forEach(s=>{
+  const text = replyText.toLowerCase();
+  let chips = [];
+
+  if(text.includes('skill') || text.includes('html') || text.includes('sql'))
+    chips.push({label:'🚀 See Projects', q:'Tell me about his main projects'});
+  if(text.includes('project') || text.includes('odoo') || text.includes('artisan'))
+    chips.push({label:'🏆 Awards', q:'What awards has Umer won?'});
+  if(text.includes('experience') || text.includes('intern'))
+    chips.push({label:'🎓 Education', q:'Tell me about his education'});
+  if(text.includes('education') || text.includes('umt') || text.includes('degree'))
+    chips.push({label:'🏅 Certifications', q:'What certifications does he have?'});
+  if(chips.length === 0)
+    chips.push({label:'💼 Experience', q:'What is his work experience?'}, {label:'📄 Download CV', q:'Where can I download his CV?'});
+
+  chips = chips.slice(0, 3);
+
+  const row = document.createElement('div');
+  row.className = 'chat-suggest-row';
+  chips.forEach(c => {
     const btn = document.createElement('button');
     btn.className = 'chat-suggest-chip';
-    btn.textContent = s;
-    btn.onclick = ()=>{ chipRow.remove(); chipAsk(s); };
-    chipRow.appendChild(btn);
+    btn.textContent = c.label;
+    btn.onclick = () => { row.remove(); chipAsk(c.q); };
+    row.appendChild(btn);
   });
-  msgs.appendChild(chipRow);
+  msgs.appendChild(row);
   msgs.scrollTop = msgs.scrollHeight;
 }
 
-/* ── Auto-resize textarea + Enter to send ── */
+/* ══════════ DOCUMENT PREVIEW MODAL ══════════ */
+const docFiles = {
+  cv: { file: 'Muhammad_Umer_Faheem_-_CV.pdf', title: 'Muhammad Umer Faheem — CV' },
+  cl: { file: 'Muhammad_Umer_Faheem_Cover_Letter.pdf', title: 'Cover Letter — BIS Position' }
+};
+
+function switchDoc(type){
+  document.querySelectorAll('.doc-panel').forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+  document.querySelectorAll('.docs-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('docPanel-' + type);
+  if(panel){ panel.style.display = 'block'; panel.classList.add('active'); }
+  event.currentTarget.classList.add('active');
+}
+
+function openDocPreview(type){
+  const doc = docFiles[type];
+  if(!doc) return;
+  const modal = document.getElementById('docPreviewModal');
+  const iframe = document.getElementById('previewIframe');
+  const title = document.getElementById('previewModalTitle');
+  const dlBtn = document.getElementById('previewDownloadBtn');
+  if(!modal || !iframe) return;
+  iframe.src = doc.file;
+  if(title) title.textContent = doc.title;
+  if(dlBtn){ dlBtn.href = doc.file; dlBtn.download = doc.file; }
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDocPreview(){
+  const modal = document.getElementById('docPreviewModal');
+  if(modal){ modal.style.display = 'none'; }
+  const iframe = document.getElementById('previewIframe');
+  if(iframe) iframe.src = '';
+  document.body.style.overflow = '';
+}
+
+/* ══════════ DOMContentLoaded ══════════ */
 document.addEventListener('DOMContentLoaded', function(){
+
+  /* Chat input auto-resize + Enter to send */
   const chatInp = document.getElementById('chatInput');
   if(chatInp){
     chatInp.addEventListener('input', function(){
@@ -4008,32 +4888,39 @@ document.addEventListener('DOMContentLoaded', function(){
       this.style.height = Math.min(this.scrollHeight, 100) + 'px';
     });
     chatInp.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' && !e.shiftKey){
-        e.preventDefault();
-        sendChatMsg();
-      }
+      if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendChatMsg(); }
     });
   }
 
-  // Close on overlay click
+  /* Chat overlay init */
   const overlay = document.getElementById('aiChatOverlay');
   if(overlay){
-    overlay.addEventListener('click', function(e){
-      if(e.target === this) toggleAIChat();
-    });
-    // init hidden
+    overlay.addEventListener('click', function(e){ if(e.target === this) toggleAIChat(); });
     overlay.style.display = 'none';
   }
 
-  // Keyboard: Escape to close
+  /* Doc modal close on backdrop */
+  const docModal = document.getElementById('docPreviewModal');
+  if(docModal){
+    docModal.addEventListener('click', function(e){ if(e.target === this) closeDocPreview(); });
+    docModal.style.display = 'none';
+  }
+
+  /* Escape key */
   document.addEventListener('keydown', e=>{
-    if(e.key === 'Escape' && chatOpen) toggleAIChat();
+    if(e.key === 'Escape'){
+      if(chatOpen) toggleAIChat();
+      closeDocPreview();
+    }
   });
 
-  // Show unread badge after 4s
-  setTimeout(()=>{
-    if(!chatOpen){ unreadCount = 1; updateUnreadBadge(); }
-  }, 4500);
+  /* Unread badge after delay */
+  setTimeout(()=>{ if(!chatOpen){ unreadCount = 1; updateUnreadBadge(); } }, 4500);
+
+  /* Doc panels init */
+  document.querySelectorAll('.doc-panel').forEach((p, i) => {
+    if(i > 0) p.style.display = 'none';
+  });
 });
 </script>
 </body>
