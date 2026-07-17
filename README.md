@@ -1,89 +1,185 @@
 <div align="center">
 
-# Muhammad Umer Faheem — Portfolio Website
+<img src="./assets/banner.png" alt="Muhammad Umer Faheem Portfolio Banner" width="100%">
 
-**Frontend Developer & BI Enthusiast**
+# Muhammad Umer Faheem
 
-A single-page personal portfolio built to showcase my work at the intersection of frontend development and business intelligence.
+### Frontend Developer × Business Intelligence Enthusiast
 
-📧 umerfaheem632@gmail.com
+Creating interactive digital experiences where modern frontend development meets data-driven thinking.
+
+<br>
+
+📧 **umerfaheem632@gmail.com**
+
+<br>
+
+<a href="https://github.com/YOUR_USERNAME">
+<img src="https://img.shields.io/badge/GitHub-Profile-111111?style=for-the-badge&logo=github&logoColor=white">
+</a>
+
+<a href="mailto:umerfaheem632@gmail.com">
+<img src="https://img.shields.io/badge/Email-Contact-FFB000?style=for-the-badge&logo=gmail&logoColor=white">
+</a>
 
 </div>
 
 ---
 
-## Table of Contents
+# ✨ Portfolio Website
 
-- [Overview](#overview)
-- [Features](#features)
-- [Built With](#built-with)
-- [Getting Started](#getting-started)
-- [Project Structure](#project-structure)
-- [License](#license)
-- [Contact](#contact)
+A premium single-page personal portfolio designed to showcase my journey as a **Frontend Developer and BI Enthusiast**.
 
-## Overview
+Built from scratch using only **HTML, CSS, and Vanilla JavaScript**, the website combines interactive UI experiences with a custom **"iOS 26 Liquid Glass"** inspired visual system.
 
-This repository contains the source code for my personal portfolio website — a single, self-contained `index.html` file combining HTML, CSS, and vanilla JavaScript. It presents my skills, experience, education, projects, certifications, and resume in one interactive, visually distinct page, built around a custom **"iOS 26 Liquid Glass"** design theme: frosted-glass panels, warm gold/amber gradients, soft glow shadows, and mesh-gradient backgrounds.
+The design focuses on:
 
-## Features
+- Frosted glass interfaces
+- Ambient gradients
+- Smooth animations
+- Data-inspired visuals
+- Responsive experiences
+- Modern frontend craftsmanship
 
-- 🎨 Custom frosted-glass ("Liquid Glass") visual theme with mesh-gradient backgrounds
-- ⌨️ Animated hero section with a typewriter-style rotating tagline
-- 🗂️ Tabbed, categorized skills panel with animated progress bars
-- 🧭 Timeline-style professional experience and education sections
-- 💼 Project showcase cards with role tags and descriptions
-- 🏆 Certifications and awards gallery
-- 📄 In-page resume / cover letter viewer
-- 🔍 Command palette (`⌘K` / `Ctrl+K`) and keyboard navigation shortcuts
-- 🖱️ Custom animated cursor and floating particle background
-- 📋 One-click copy for contact email
-- 📱 Fully responsive layout with a dedicated mobile menu
+---
 
-## Built With
+# 🌐 Live Preview
+
+<div align="center">
+
+<img src="./assets/portfolio-preview.gif" width="900">
+
+<br>
+
+### 🔗 Website
+
+https://your-portfolio-link.com
+
+</div>
+
+---
+
+# 📸 Visual Showcase
+
+## Desktop Experience
+
+<img src="./assets/hero.png" width="100%">
+
+<br>
+
+## Skills Dashboard
+
+<img src="./assets/skills.png" width="100%">
+
+<br>
+
+## Project Showcase
+
+<img src="./assets/projects.png" width="100%">
+
+<br>
+
+## Mobile Responsive Design
+
+<img src="./assets/mobile.png" width="350">
+
+---
+
+# 🚀 Features
+
+### 🎨 Liquid Glass Design System
+
+- Custom frosted-glass UI components
+- Mesh-gradient backgrounds
+- Gold and amber lighting effects
+- Soft glow shadows
+- Layered depth effects
+
+### ⌨️ Interactive Experience
+
+- Animated hero introduction
+- Typewriter-style rotating tagline
+- Custom animated cursor
+- Floating particle background
+- Smooth section transitions
+
+### 🧩 Portfolio Sections
+
+- About section
+- Skills dashboard
+- Professional timeline
+- Education history
+- Project showcase
+- Certifications gallery
+- Resume viewer
+
+### ⚡ Advanced Interactions
+
+- Command palette (`⌘K` / `Ctrl+K`)
+- Keyboard navigation shortcuts
+- Animated progress indicators
+- One-click email copy
+- Responsive mobile navigation
+
+---
+
+# 🧠 Design Philosophy
+
+The portfolio follows the concept of **"iOS 26 Liquid Glass"** — a visual language inspired by depth, transparency, and motion.
+
+The goal was to create something beyond a traditional portfolio:
+
+> A digital identity that feels like an interactive product experience.
+
+Design principles:
+
+- Minimal but expressive layouts
+- Soft lighting instead of harsh borders
+- Motion that guides attention
+- Interfaces that feel alive
+
+---
+
+# 🛠 Tech Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode,figma">
+
+</div>
+
+<br>
 
 | Layer | Technology |
 |---|---|
 | Structure | HTML5 |
-| Styling | CSS3 (custom properties, `backdrop-filter`, keyframe animations) |
-| Interactivity | Vanilla JavaScript — no frameworks |
-| Fonts & Icons | Google Fonts (Sora, Playfair Display), Font Awesome |
-| Hosting | Static site — GitHub Pages / Netlify / Vercel compatible |
+| Styling | CSS3 |
+| Animations | CSS Keyframes + JavaScript |
+| Logic | Vanilla JavaScript |
+| Fonts | Google Fonts |
+| Icons | Font Awesome |
+| Hosting | GitHub Pages / Netlify / Vercel |
 
-No build tools, bundlers, or package dependencies are required.
+No frameworks.  
+No dependencies.  
+No build tools.
 
-## Getting Started
+Just pure frontend engineering.
 
-This is a static site with no build process.
+---
 
-```bash
-# Clone the repository
-git clone <repository-url>
-
-# Open directly in a browser
-open index.html
-```
-
-Or serve it locally for accurate font/icon loading:
+# 🏗 Project Structure
 
 ```bash
-npx serve .
-```
-
-## Project Structure
-
-```
 .
-├── index.html    # Complete site — HTML, CSS, and JS in a single file
-├── LICENSE       # Usage terms — all rights reserved
-└── README.md     # This file
-```
-
-## License
-
-**All rights reserved.** This code, design, and content may not be copied, reused, redistributed, or used as a template without prior written permission from the author. See [`LICENSE`](./LICENSE) for full terms.
-
-## Contact
-
-**Muhammad Umer Faheem**
-📧 umerfaheem632@gmail.com
+├── index.html
+├── README.md
+├── LICENSE
+│
+└── assets
+    ├── banner.png
+    ├── portfolio-preview.gif
+    ├── hero.png
+    ├── skills.png
+    ├── projects.png
+    └── mobile.png
