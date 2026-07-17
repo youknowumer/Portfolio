@@ -201,7 +201,7 @@ Any unauthorized use, reproduction, or distribution of this project and its comp
 
 ---
 
-⭐ Support
+# **⭐ Support**
 
 If you find this project useful or inspiring, consider giving the repository a star.
 
