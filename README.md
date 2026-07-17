@@ -1,12 +1,14 @@
 <div align="center">
 
-<img src="./assets/banner.png" alt="Muhammad Umer Faheem Portfolio Banner" width="100%">
+<img src="./assets/banner.png" width="100%" alt="Muhammad Umer Faheem Portfolio">
 
-# Muhammad Umer Faheem
+<br>
+
+# ✦ Muhammad Umer Faheem
 
 ### Frontend Developer × Business Intelligence Enthusiast
 
-Creating interactive digital experiences where modern frontend development meets data-driven thinking.
+Building premium digital experiences where **frontend engineering, elegant UI design, and data-driven thinking** come together.
 
 <br>
 
@@ -14,48 +16,119 @@ Creating interactive digital experiences where modern frontend development meets
 
 <br>
 
-<a href="https://github.com/YOUR_USERNAME">
-<img src="https://img.shields.io/badge/GitHub-Profile-111111?style=for-the-badge&logo=github&logoColor=white">
-</a>
-
-<a href="mailto:umerfaheem632@gmail.com">
-<img src="https://img.shields.io/badge/Email-Contact-FFB000?style=for-the-badge&logo=gmail&logoColor=white">
-</a>
+<img src="https://img.shields.io/badge/Frontend-Developer-38BDF8?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/Business-Intelligence-A78BFA?style=for-the-badge&logo=powerbi&logoColor=white">
+<img src="https://img.shields.io/badge/UI-Engineering-FFB84D?style=for-the-badge&logo=figma&logoColor=black">
 
 </div>
 
 ---
 
-# ✨ Portfolio Website
+# 🚀 Muhammad Umer Faheem — Portfolio Website
 
-A premium single-page personal portfolio designed to showcase my journey as a **Frontend Developer and BI Enthusiast**.
+A single-page personal portfolio built to showcase my work at the intersection of **Frontend Development and Business Intelligence**.
 
-Built from scratch using only **HTML, CSS, and Vanilla JavaScript**, the website combines interactive UI experiences with a custom **"iOS 26 Liquid Glass"** inspired visual system.
+Designed with a custom **Liquid Glass design system**, this portfolio focuses on creating a premium digital identity through:
 
-The design focuses on:
-
-- Frosted glass interfaces
-- Ambient gradients
-- Smooth animations
-- Data-inspired visuals
-- Responsive experiences
-- Modern frontend craftsmanship
+✨ Frosted glass interfaces  
+✨ Ambient gradients  
+✨ Smooth animations  
+✨ Interactive components  
+✨ Responsive layouts  
+✨ Modern frontend craftsmanship  
 
 ---
-
-# 🌐 Live Preview
 
 <div align="center">
 
-<img src="./assets/portfolio-preview.gif" width="900">
+<img src="./assets/portfolio-preview.gif" width="90%" alt="Portfolio Preview">
 
 <br>
 
-### 🔗 Website
-
+🌐 **Live Website:**  
 https://your-portfolio-link.com
 
 </div>
+
+---
+
+# ✨ Features
+
+## 🎨 Premium Visual Design
+
+- Custom Liquid Glass UI theme
+- Frosted glass cards
+- Mesh gradient backgrounds
+- Gold and amber lighting effects
+- Soft glow shadows
+- Modern typography system
+
+## ⚡ Interactive Experience
+
+- Animated hero section
+- Typewriter rotating tagline
+- Custom animated cursor
+- Floating particle background
+- Smooth transitions
+- Keyboard shortcuts
+- Command palette (`⌘K / Ctrl+K`)
+
+## 💼 Portfolio Showcase
+
+- Professional introduction
+- Skills dashboard
+- Experience timeline
+- Education timeline
+- Project gallery
+- Certifications section
+- Resume viewer
+- Contact interaction
+
+---
+
+# 🎨 Design Language
+
+Inspired by modern Apple interfaces and futuristic dashboards.
+
+### Color Palette
+
+| Usage | Color |
+|---|---|
+| Background | `#070A12` |
+| Primary Text | `#FFFFFF` |
+| Secondary Text | `#CBD5E1` |
+| Gold Accent | `#FFB84D` |
+| Amber Glow | `#F59E0B` |
+| Blue Highlight | `#38BDF8` |
+| Purple Accent | `#A78BFA` |
+
+---
+
+# 🛠 Technology Stack
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode,figma">
+
+</div>
+
+<br>
+
+| Layer | Technology |
+|---|---|
+| Structure | HTML5 |
+| Styling | CSS3 |
+| Logic | Vanilla JavaScript |
+| Animations | CSS Keyframes + JavaScript |
+| Icons | Font Awesome |
+| Fonts | Google Fonts |
+| Hosting | GitHub Pages / Netlify / Vercel |
+
+No frameworks.  
+No dependencies.  
+No build tools.
+
+Just pure frontend development.
 
 ---
 
@@ -79,96 +152,29 @@ https://your-portfolio-link.com
 
 <br>
 
-## Mobile Responsive Design
+## Mobile Experience
 
 <img src="./assets/mobile.png" width="350">
 
 ---
 
-# 🚀 Features
+# 🧠 Behind The Build
 
-### 🎨 Liquid Glass Design System
+This portfolio was created with the idea that a developer website should not only describe skills — it should demonstrate them.
 
-- Custom frosted-glass UI components
-- Mesh-gradient backgrounds
-- Gold and amber lighting effects
-- Soft glow shadows
-- Layered depth effects
+### Development Highlights
 
-### ⌨️ Interactive Experience
-
-- Animated hero introduction
-- Typewriter-style rotating tagline
-- Custom animated cursor
-- Floating particle background
-- Smooth section transitions
-
-### 🧩 Portfolio Sections
-
-- About section
-- Skills dashboard
-- Professional timeline
-- Education history
-- Project showcase
-- Certifications gallery
-- Resume viewer
-
-### ⚡ Advanced Interactions
-
-- Command palette (`⌘K` / `Ctrl+K`)
-- Keyboard navigation shortcuts
-- Animated progress indicators
-- One-click email copy
-- Responsive mobile navigation
+- Single HTML architecture
+- Custom CSS animation system
+- Fully responsive layout
+- No frontend frameworks
+- Lightweight static deployment
+- Interactive user experience
+- Performance-focused design
 
 ---
 
-# 🧠 Design Philosophy
-
-The portfolio follows the concept of **"iOS 26 Liquid Glass"** — a visual language inspired by depth, transparency, and motion.
-
-The goal was to create something beyond a traditional portfolio:
-
-> A digital identity that feels like an interactive product experience.
-
-Design principles:
-
-- Minimal but expressive layouts
-- Soft lighting instead of harsh borders
-- Motion that guides attention
-- Interfaces that feel alive
-
----
-
-# 🛠 Tech Stack
-
-<div align="center">
-
-<img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode,figma">
-
-</div>
-
-<br>
-
-| Layer | Technology |
-|---|---|
-| Structure | HTML5 |
-| Styling | CSS3 |
-| Animations | CSS Keyframes + JavaScript |
-| Logic | Vanilla JavaScript |
-| Fonts | Google Fonts |
-| Icons | Font Awesome |
-| Hosting | GitHub Pages / Netlify / Vercel |
-
-No frameworks.  
-No dependencies.  
-No build tools.
-
-Just pure frontend engineering.
-
----
-
-# 🏗 Project Structure
+# 📂 Project Structure
 
 ```bash
 .
@@ -182,4 +188,14 @@ Just pure frontend engineering.
     ├── hero.png
     ├── skills.png
     ├── projects.png
-    └── mobile.png
+    ├── mobile.png
+    └── footer.png
+
+
+git clone <repository-url>
+
+📜 License
+
+All Rights Reserved
+
+This project, including its source code, design system, animations, and visual identity, may not be copied, reused, redistributed, or converted into a template without prior written permission.
