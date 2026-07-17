@@ -201,6 +201,11 @@ Any unauthorized use, reproduction, or distribution of this project and its comp
 
 ---
 
+⭐ Support
+
+If you find this project useful or inspiring, consider giving the repository a star.
+
+---
 
 # 📂 Repository Structure
 
