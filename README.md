@@ -33,7 +33,7 @@ This portfolio is built as a complete personal brand website where visitors can 
 - Resume information
 - Contact details
 
-The goal of this project is to create more than a traditional portfolio — it is designed as an interactive digital identity.
+The goal of this project is to create more than a traditional portfolio it is designed as an interactive digital identity.
 
 ---
 
