@@ -181,8 +181,6 @@ Color direction:
 
 ---
 
----
-
 # 🔐 License
 
 **All Rights Reserved**
