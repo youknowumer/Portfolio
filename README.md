@@ -1,41 +1,45 @@
 <div align="center">
 
-<img src="./assets/banner.png" width="100%" alt="Muhammad Umer Faheem Portfolio">
-
-<br>
-
 # ✦ Muhammad Umer Faheem
 
 ### Frontend Developer × Business Intelligence Enthusiast
 
-Building premium digital experiences where **frontend engineering, elegant UI design, and data-driven thinking** come together.
+<img src="./assets/banner.png" width="100%" alt="Muhammad Umer Faheem Portfolio">
+
+<br>
+
+Building elegant digital experiences by combining **frontend engineering, UI design, and data-driven thinking**.
 
 <br>
 
 📧 **umerfaheem632@gmail.com**
 
-<br>
+<br><br>
 
-<img src="https://img.shields.io/badge/Frontend-Developer-38BDF8?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/Business-Intelligence-A78BFA?style=for-the-badge&logo=powerbi&logoColor=white">
-<img src="https://img.shields.io/badge/UI-Engineering-FFB84D?style=for-the-badge&logo=figma&logoColor=black">
+<a href="mailto:umerfaheem632@gmail.com">
+<img src="https://img.shields.io/badge/Contact-Email-FFB84D?style=for-the-badge&logo=gmail&logoColor=black">
+</a>
+
+<a href="https://github.com">
+<img src="https://img.shields.io/badge/GitHub-Profile-111827?style=for-the-badge&logo=github&logoColor=white">
+</a>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=powerbi&logoColor=black">
 
 </div>
 
 ---
 
-# 🚀 Muhammad Umer Faheem — Portfolio Website
+# 🚀 Portfolio Website
 
-A single-page personal portfolio built to showcase my work at the intersection of **Frontend Development and Business Intelligence**.
+A premium single-page portfolio website designed to showcase my journey as a **Frontend Developer and BI Enthusiast**.
 
-Designed with a custom **Liquid Glass design system**, this portfolio focuses on creating a premium digital identity through:
-
-✨ Frosted glass interfaces  
-✨ Ambient gradients  
-✨ Smooth animations  
-✨ Interactive components  
-✨ Responsive layouts  
-✨ Modern frontend craftsmanship  
+The website combines a modern **Liquid Glass interface**, interactive animations, and a clean data-inspired visual system to create a unique developer experience.
 
 ---
 
@@ -43,68 +47,78 @@ Designed with a custom **Liquid Glass design system**, this portfolio focuses on
 
 <img src="./assets/portfolio-preview.gif" width="90%" alt="Portfolio Preview">
 
-<br>
-
-🌐 **Live Website:**  
-https://your-portfolio-link.com
-
 </div>
 
 ---
 
 # ✨ Features
 
-## 🎨 Premium Visual Design
+<table>
+<tr>
+<td width="50%">
 
-- Custom Liquid Glass UI theme
+## 🎨 Design
+
+- Liquid Glass UI
 - Frosted glass cards
 - Mesh gradient backgrounds
-- Gold and amber lighting effects
-- Soft glow shadows
-- Modern typography system
+- Soft glow effects
+- Premium dark theme
+- Responsive layouts
 
-## ⚡ Interactive Experience
+</td>
+
+<td width="50%">
+
+## ⚡ Interaction
 
 - Animated hero section
-- Typewriter rotating tagline
-- Custom animated cursor
-- Floating particle background
-- Smooth transitions
+- Typewriter effects
+- Custom cursor
+- Floating particles
 - Keyboard shortcuts
-- Command palette (`⌘K / Ctrl+K`)
+- Command palette
 
-## 💼 Portfolio Showcase
+</td>
 
-- Professional introduction
-- Skills dashboard
-- Experience timeline
-- Education timeline
-- Project gallery
-- Certifications section
-- Resume viewer
-- Contact interaction
+</tr>
+</table>
 
 ---
 
-# 🎨 Design Language
+# 🧩 Portfolio Sections
 
-Inspired by modern Apple interfaces and futuristic dashboards.
+| Section | Description |
+|---|---|
+| 👨‍💻 About | Developer introduction and personal identity |
+| 🛠 Skills | Interactive technical skill dashboard |
+| 🧭 Experience | Professional timeline |
+| 🎓 Education | Academic journey |
+| 💼 Projects | Featured development work |
+| 🏆 Certifications | Achievements and credentials |
+| 📄 Resume | Interactive resume viewer |
+
+---
+
+# 🎨 Design System
+
+The website follows a modern **Liquid Glass + Digital Product** design philosophy.
 
 ### Color Palette
 
-| Usage | Color |
+| Element | Hex |
 |---|---|
 | Background | `#070A12` |
-| Primary Text | `#FFFFFF` |
-| Secondary Text | `#CBD5E1` |
-| Gold Accent | `#FFB84D` |
-| Amber Glow | `#F59E0B` |
-| Blue Highlight | `#38BDF8` |
-| Purple Accent | `#A78BFA` |
+| White | `#FFFFFF` |
+| Text Gray | `#CBD5E1` |
+| Gold | `#FFB84D` |
+| Amber | `#F59E0B` |
+| Blue | `#38BDF8` |
+| Purple | `#A78BFA` |
 
 ---
 
-# 🛠 Technology Stack
+# 🛠 Built With
 
 <div align="center">
 
@@ -114,27 +128,20 @@ Inspired by modern Apple interfaces and futuristic dashboards.
 
 <br>
 
-| Layer | Technology |
+| Technology | Usage |
 |---|---|
-| Structure | HTML5 |
-| Styling | CSS3 |
-| Logic | Vanilla JavaScript |
-| Animations | CSS Keyframes + JavaScript |
-| Icons | Font Awesome |
-| Fonts | Google Fonts |
-| Hosting | GitHub Pages / Netlify / Vercel |
-
-No frameworks.  
-No dependencies.  
-No build tools.
-
-Just pure frontend development.
+| HTML5 | Website structure |
+| CSS3 | Styling, animations, effects |
+| JavaScript | Interactions and functionality |
+| Google Fonts | Typography |
+| Font Awesome | Icons |
+| Static Hosting | Deployment |
 
 ---
 
-# 📸 Visual Showcase
+# 📸 Preview
 
-## Desktop Experience
+## Hero Section
 
 <img src="./assets/hero.png" width="100%">
 
@@ -152,29 +159,27 @@ Just pure frontend development.
 
 <br>
 
-## Mobile Experience
+## Mobile Responsive View
 
 <img src="./assets/mobile.png" width="350">
 
 ---
 
-# 🧠 Behind The Build
+# 🧠 Development Philosophy
 
-This portfolio was created with the idea that a developer website should not only describe skills — it should demonstrate them.
+A portfolio should not only explain what a developer can do — it should demonstrate it.
 
-### Development Highlights
+This project focuses on:
 
-- Single HTML architecture
-- Custom CSS animation system
-- Fully responsive layout
-- No frontend frameworks
-- Lightweight static deployment
-- Interactive user experience
-- Performance-focused design
+- Clean user experiences
+- Modern interface design
+- Smooth interactions
+- Performance-focused development
+- Creative frontend solutions
 
 ---
 
-# 📂 Project Structure
+# 📂 Repository Structure
 
 ```bash
 .
@@ -190,3 +195,85 @@ This portfolio was created with the idea that a developer website should not onl
     ├── projects.png
     ├── mobile.png
     └── footer.png
+```
+
+---
+
+# ⚙️ Run Locally
+
+```bash
+git clone <repository-url>
+
+cd portfolio
+
+open index.html
+```
+
+Or:
+
+```bash
+npx serve .
+```
+
+---
+
+# 📊 Project Highlights
+
+<div align="center">
+
+| Feature | Details |
+|---|---|
+| Framework | None |
+| Dependencies | None |
+| Architecture | Single HTML File |
+| Responsive | Yes |
+| Animations | Custom CSS + JavaScript |
+| Hosting | GitHub Pages Ready |
+
+</div>
+
+---
+
+# 📜 License
+
+**All Rights Reserved**
+
+This project, including code, design, animations, and visual elements, cannot be copied, redistributed, reused, or converted into a template without permission from the author.
+
+---
+
+<div align="center">
+
+<img src="./assets/footer.png" width="100%" alt="Footer">
+
+<br>
+
+# ✦ Muhammad Umer Faheem
+
+### Frontend Developer • BI Enthusiast • Digital Experience Creator
+
+Creating meaningful experiences through **code, creativity, and data**.
+
+<br>
+
+<a href="mailto:umerfaheem632@gmail.com">
+<img src="https://img.shields.io/badge/GET%20IN%20TOUCH-FFB84D?style=for-the-badge&logo=gmail&logoColor=black">
+</a>
+
+<br><br>
+
+<img src="https://img.shields.io/badge/Frontend%20Development-38BDF8?style=flat-square">
+<img src="https://img.shields.io/badge/Business%20Intelligence-A78BFA?style=flat-square">
+<img src="https://img.shields.io/badge/Data%20Visualization-FFB84D?style=flat-square">
+
+<br><br>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⭐ **Designed & Developed by Muhammad Umer Faheem**
+
+<br>
+
+© 2026 • All Rights Reserved
+
+</div>
