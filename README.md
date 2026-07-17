@@ -181,15 +181,6 @@ Color direction:
 
 ---
 
-# 📂 Repository Structure
-
-```bash
-.
-├── index.html
-├── README.md
-├── LICENSE
-└── assets/
-
 ---
 
 # 🔐 License
@@ -211,3 +202,14 @@ without prior written permission from the author.
 Any unauthorized use, reproduction, or distribution of this project and its components is strictly prohibited.
 
 ---
+
+
+# 📂 Repository Structure
+
+```bash
+.
+├── index.html
+├── README.md
+├── LICENSE
+└── assets/
+
