@@ -189,3 +189,25 @@ Color direction:
 ├── README.md
 ├── LICENSE
 └── assets/
+
+---
+
+# 🔐 License
+
+**All Rights Reserved**
+
+This repository contains original code, design, and content created by **Muhammad Umer Faheem**.
+
+The project may not be:
+
+- Copied
+- Redistributed
+- Reused as a template
+- Modified for commercial purposes
+- Republished under another identity
+
+without prior written permission from the author.
+
+Any unauthorized use, reproduction, or distribution of this project and its components is strictly prohibited.
+
+---
