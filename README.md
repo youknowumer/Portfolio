@@ -190,12 +190,3 @@ This portfolio was created with the idea that a developer website should not onl
     ├── projects.png
     ├── mobile.png
     └── footer.png
-
-
-git clone <repository-url>
-
-📜 License
-
-All Rights Reserved
-
-This project, including its source code, design system, animations, and visual identity, may not be copied, reused, redistributed, or converted into a template without prior written permission.
